@@ -1,6 +1,6 @@
 {
 	"name": "@dorixdev/scroll-sync",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"license": "MIT",
 	"description": "A lightweight React library to synchronize navigation menus with scrollable content sections.",
 	"type": "module",
