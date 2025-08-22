@@ -1,0 +1,5 @@
+{
+	"*.{css,scss,styled.ts}": ["stylelint --fix"],
+	"*.{js,jsx,ts,tsx,md,html,json}": ["pretty-quick --staged"],
+	"*.{js,jsx,ts,tsx}": ["eslint --cache --fix"]
+}

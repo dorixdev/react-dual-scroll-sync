@@ -1,0 +1,46 @@
+/// <reference types="vitest/config" />
+
+import path from 'node:path';
+
+import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
+
+// More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
+export default defineConfig({
+	plugins: [
+		react(),
+		dts({
+			insertTypesEntry: true,
+			rollupTypes: true,
+			tsconfigPath: './tsconfig.json',
+			entryRoot: 'lib',
+			outDir: 'dist'
+		})
+	],
+	build: {
+		copyPublicDir: false,
+		lib: {
+			entry: path.resolve(__dirname, 'lib/index.ts'),
+			name: 'ScrollSync',
+			formats: ['es', 'cjs'],
+			fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`
+		},
+		rollupOptions: {
+			external: ['react', 'react-dom', 'clsx', 'styled-components'],
+			output: { exports: 'named' }
+		}
+	},
+	test: {
+		globals: true,
+		environment: 'jsdom',
+		setupFiles: ['./lib/setupTests.ts'],
+		include: ['lib/**/*.{test,spec}.{js,ts,jsx,tsx}'],
+		coverage: {
+			thresholds: { functions: 80, branches: 80, lines: 80, statements: 80 },
+			all: true,
+			provider: 'v8',
+			reporter: ['html', 'clover', 'json', 'text', 'text-summary']
+		}
+	}
+});
