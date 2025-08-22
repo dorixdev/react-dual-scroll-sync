@@ -1,0 +1,111 @@
+@use '../../scss/tokens.scss' as *;
+
+.scrollSync {
+	overflow: hidden;
+	display: flex;
+
+	height: 100%;
+	border: 1px solid var(--scroll-sync-border-color, #{$border-color});
+	border-radius: var(--scroll-sync-border-radius, #{$border-radius});
+
+	background-color: var(--scroll-sync-highlight-background-color, #{$highlight-background-color});
+
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+}
+
+.scrollSyncNav {
+	overflow-y: auto;
+	width: 100%;
+	max-width: var(--scroll-sync-max-width-nav, #{$max-width-nav});
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.scrollSyncNavItem {
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+	height: calc(100% / var(--menu-nav-visible-count));
+	min-height: 56px;
+	padding: var(--scroll-sync-space-m, #{$space-m}) var(--scroll-sync-space-s, #{$space-s});
+	border-bottom: 1px solid var(--scroll-sync-border-color, #{$border-color});
+
+	text-align: left;
+
+	background-color: var(--scroll-sync-base-color, #{$inactive-background-color});
+
+	transition: var(--scroll-sync-transition, #{$transition});
+
+	&:first-child {
+		border-top-left-radius: var(--scroll-sync-border-radius, #{$border-radius});
+	}
+
+	&:last-child {
+		border-bottom: none;
+		border-bottom-left-radius: var(--scroll-sync-border-radius, #{$border-radius});
+	}
+}
+
+.scrollSyncNavItemLabel,
+.scrollSyncContentSectionLabel {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+}
+
+.scrollSyncNavItemLabel {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0 var(--scroll-sync-space-m, #{$space-m});
+}
+
+.scrollSyncContentSectionLabel {
+	padding: var(--scroll-sync-space-s, #{$space-s}) 0;
+	font-weight: bold;
+}
+
+.scrollSyncNavItemActive {
+	background-color: var(--scroll-sync-highlight-color, #{$highlight-background-color});
+
+	span {
+		border-left: 3px solid
+			var(--scroll-sync-highlight-background-color, #{$highlight-foreground-color});
+		font-weight: bold;
+		color: var(--scroll-sync-highlight-foreground-color, #{$highlight-foreground-color});
+	}
+}
+
+.scrollSyncContent {
+	overflow-x: hidden;
+	overflow-y: auto;
+	flex: 1;
+	gap: var(--scroll-sync-space-m, #{$space-m});
+
+	height: 100%;
+	padding: var(--scroll-sync-space-s, #{$space-s});
+}
+
+.scrollSyncContentSection {
+	display: flex;
+	flex-direction: column;
+	gap: var(--scroll-sync-space-l, #{$space-l});
+
+	height: auto;
+	padding: var(--scroll-sync-space-m, #{$space-m});
+	border-radius: var(--scroll-sync-border-radius, #{$border-radius});
+
+	transition: background-color 0.3s ease-in-out;
+}
