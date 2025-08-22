@@ -9,7 +9,7 @@ export default createPreset({
 		{ type: 'style', section: '🎨 Styles & Theming', hidden: false },
 		{ type: 'refactor', section: '🛠️ Code Refactoring', hidden: false },
 		{ type: 'perf', section: '⚡ Performance Improvements', hidden: false },
-		{ type: 'test', section: '✅ Tests', hidden: true },
+		{ type: 'test', section: '✅ Tests', hidden: false },
 		{ type: 'build', section: '🏗️ Build System', hidden: true },
 		{ type: 'ci', section: '👷 Continuous Integration', hidden: true },
 		{ type: 'chore', section: '🧹 Chores', hidden: true },
