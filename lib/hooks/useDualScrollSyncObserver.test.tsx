@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { ScrollSync } from '../components/ScrollSync';
+import { DualScrollSync } from '../components/DualScrollSync';
 import { IntersectionObserverMock } from '../setupTests';
 
 export function mockRect(el: Element, rect: Partial<DOMRect>) {
@@ -46,11 +46,11 @@ describe('implementation of useScrollSyncObserver', () => {
 	it('scrolls and marks the correct NavItem active on click', () => {
 		const onSectionChange = vi.fn();
 
-		render(<ScrollSync id="scroll-sync" items={options} onItemClick={onSectionChange} />);
+		render(<DualScrollSync id="dual-scroll-sync" items={options} onItemClick={onSectionChange} />);
 
-		const content = screen.getByTestId('scroll-sync-content');
-		const sectionTwo = screen.getByTestId('scroll-sync-content-section-s2');
-		const btnTwo = screen.getByTestId('scroll-sync-nav-item-s2');
+		const content = screen.getByTestId('dual-scroll-sync-content');
+		const sectionTwo = screen.getByTestId('dual-scroll-sync-content-section-s2');
+		const btnTwo = screen.getByTestId('dual-scroll-sync-nav-item-s2');
 
 		mockRect(content, { top: 100, height: 200 });
 		mockRect(sectionTwo, { top: 250, height: 300 });
@@ -73,14 +73,14 @@ describe('implementation of useScrollSyncObserver', () => {
 	});
 
 	it('ignores IntersectionObserver while isScrollingByClick is true and then applies', () => {
-		render(<ScrollSync id="scroll-sync" items={options} />);
+		render(<DualScrollSync id="dual-scroll-sync" items={options} />);
 
-		const content = screen.getByTestId('scroll-sync-content');
-		const sectionOne = screen.getByTestId('scroll-sync-content-section-s1');
-		const sectionTwo = screen.getByTestId('scroll-sync-content-section-s2');
+		const content = screen.getByTestId('dual-scroll-sync-content');
+		const sectionOne = screen.getByTestId('dual-scroll-sync-content-section-s1');
+		const sectionTwo = screen.getByTestId('dual-scroll-sync-content-section-s2');
 
-		const btnOne = screen.getByTestId('scroll-sync-nav-item-s1');
-		const btnTwo = screen.getByTestId('scroll-sync-nav-item-s2');
+		const btnOne = screen.getByTestId('dual-scroll-sync-nav-item-s1');
+		const btnTwo = screen.getByTestId('dual-scroll-sync-nav-item-s2');
 
 		mockRect(content, { top: 100, height: 200 });
 		mockRect(sectionOne, { top: 120, height: 300 });
@@ -94,14 +94,14 @@ describe('implementation of useScrollSyncObserver', () => {
 	});
 
 	it('removes keys from Set when an entry stops intersecting (delete branch + re-selection)', () => {
-		render(<ScrollSync id="scroll-sync" items={options} />);
+		render(<DualScrollSync id="dual-scroll-sync" items={options} />);
 
-		const content = screen.getByTestId('scroll-sync-content');
-		const sectionOne = screen.getByTestId('scroll-sync-content-section-s1');
-		const sectionTwo = screen.getByTestId('scroll-sync-content-section-s2');
+		const content = screen.getByTestId('dual-scroll-sync-content');
+		const sectionOne = screen.getByTestId('dual-scroll-sync-content-section-s1');
+		const sectionTwo = screen.getByTestId('dual-scroll-sync-content-section-s2');
 
-		const btnOne = screen.getByTestId('scroll-sync-nav-item-s1');
-		const btnTwo = screen.getByTestId('scroll-sync-nav-item-s2');
+		const btnOne = screen.getByTestId('dual-scroll-sync-nav-item-s1');
+		const btnTwo = screen.getByTestId('dual-scroll-sync-nav-item-s2');
 
 		mockRect(content, { top: 100, height: 400 });
 		mockRect(sectionOne, { top: 120, height: 300 });
@@ -142,14 +142,14 @@ describe('implementation of useScrollSyncObserver', () => {
 	});
 
 	it('selects the section visually higher based on getBoundingClientRect().top', () => {
-		render(<ScrollSync id="scroll-sync" items={options} />);
+		render(<DualScrollSync id="dual-scroll-sync" items={options} />);
 
-		const content = screen.getByTestId('scroll-sync-content');
-		const sectionOne = screen.getByTestId('scroll-sync-content-section-s1');
-		const sectionTwo = screen.getByTestId('scroll-sync-content-section-s2');
+		const content = screen.getByTestId('dual-scroll-sync-content');
+		const sectionOne = screen.getByTestId('dual-scroll-sync-content-section-s1');
+		const sectionTwo = screen.getByTestId('dual-scroll-sync-content-section-s2');
 
-		const btnOne = screen.getByTestId('scroll-sync-nav-item-s1');
-		const btnTwo = screen.getByTestId('scroll-sync-nav-item-s2');
+		const btnOne = screen.getByTestId('dual-scroll-sync-nav-item-s1');
+		const btnTwo = screen.getByTestId('dual-scroll-sync-nav-item-s2');
 
 		mockRect(content, { top: 100, height: 400 });
 		mockRect(sectionOne, { top: 300, height: 300 });

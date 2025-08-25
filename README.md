@@ -1,10 +1,10 @@
-# @dorixdev/scroll-sync
+# @dorixdev/react-dual-scroll-sync
 
 A lightweight React library to synchronize a vertical navigation menu with scrollable content sections. Ideal for advanced catalogs, filter drawers, and any layout that needs a **sticky nav** that tracks the **visible section** and enables **smooth scroll**.
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@dorixdev/scroll-sync"><img alt="npm" src="https://img.shields.io/npm/v/@dorixdev/scroll-sync.svg"></a>
-  <a href="https://github.com/dorixdev/scroll-sync/actions"><img alt="CI" src="https://github.com/dorixdev/scroll-sync/workflows/Release%20to%20npm/badge.svg"></a>
+  <a href="https://www.npmjs.com/package/@dorixdev/react-dual-scroll-sync"><img alt="npm" src="https://img.shields.io/npm/v/@dorixdev/react-dual-scroll-sync.svg"></a>
+  <a href="https://github.com/dorixdev/react-dual-scroll-sync/actions"><img alt="CI" src="https://github.com/dorixdev/react-dual-scroll-sync/workflows/Release%20to%20npm/badge.svg"></a>
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 </p>
 
@@ -21,9 +21,9 @@ A lightweight React library to synchronize a vertical navigation menu with scrol
 ## 📦 Installation
 
 ```bash
-pnpm add @dorixdev/scroll-sync
+pnpm add @dorixdev/react-dual-scroll-sync
 # or
-npm i @dorixdev/scroll-sync
+npm i @dorixdev/react-dual-scroll-sync
 ```
 
 ## 💄 Styles
@@ -32,13 +32,13 @@ Import the packaged CSS once in your app:
 
 ```ts
 // e.g., main.tsx or App.tsx
-import '@dorixdev/scroll-sync/styles.css';
+import '@dorixdev/react-dual-scroll-sync/styles.css';
 ```
 
 ## 🚀 Quick start
 
 ```tsx
-import { ScrollSync } from '@dorixdev/scroll-sync';
+import { DualScrollSync } from '@dorixdev/react-dual-scroll-sync';
 
 const items = [
 	{ sectionKey: 's1', label: 'Section 1', children: <div>…</div> },
@@ -48,7 +48,7 @@ const items = [
 
 export default function Demo() {
 	return (
-		<ScrollSync
+		<DualScrollSync
 			id="filters"
 			items={items}
 			maxVisibleItems={6}

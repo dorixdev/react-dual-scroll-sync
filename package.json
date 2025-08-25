@@ -1,6 +1,6 @@
 {
-	"name": "@dorixdev/scroll-sync",
-	"version": "1.0.0",
+	"name": "@dorixdev/react-dual-scroll-sync",
+	"version": "1.1.0",
 	"license": "MIT",
 	"description": "A lightweight React library to synchronize navigation menus with scrollable content sections.",
 	"type": "module",
@@ -13,7 +13,7 @@
 			"require": "./dist/index.cjs",
 			"import": "./dist/index.js"
 		},
-		"./styles.css": "./dist/scroll-sync.css"
+		"./styles.css": "./dist/react-dual-scroll-sync.css"
 	},
 	"files": [
 		"dist",
@@ -104,11 +104,11 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/dorixdev/scroll-sync.git"
+		"url": "https://github.com/dorixdev/react-dual-scroll-sync.git"
 	},
-	"homepage": "https://github.com/dorixdev/scroll-sync#readme",
+	"homepage": "https://github.com/dorixdev/react-dual-scroll-sync#readme",
 	"bugs": {
-		"url": "https://github.com/dorixdev/scroll-sync/issues"
+		"url": "https://github.com/dorixdev/react-dual-scroll-sync/issues"
 	},
 	"keywords": [
 		"react",
@@ -117,7 +117,9 @@
 		"scroll-sync",
 		"observer",
 		"navigation",
-		"menu"
+		"menu",
+		"dual-scroll",
+		"scrollspy"
 	],
 	"packageManager": "pnpm@10.13.1",
 	"sideEffects": [

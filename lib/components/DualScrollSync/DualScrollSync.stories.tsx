@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
 
-import { ScrollSync } from './ScrollSync';
+import { DualScrollSync } from './DualScrollSync';
 
-const meta: Meta<typeof ScrollSync> = {
-	title: 'ScrollSync',
-	component: ScrollSync,
+const meta: Meta<typeof DualScrollSync> = {
+	title: 'DualScrollSync',
+	component: DualScrollSync,
 	tags: ['autodocs'],
 	argTypes: {
 		items: { control: { type: 'object', disable: true } },
@@ -22,7 +22,7 @@ const meta: Meta<typeof ScrollSync> = {
 			{ sectionKey: 's7', label: 'Label 7', children: <MockContentSection /> },
 			{ sectionKey: 's8', label: 'Label 8', children: <MockContentSection /> }
 		],
-		id: 'scroll-sync',
+		id: 'dual-scroll-sync',
 		onItemClick: action('onItemClick'),
 		maxVisibleItems: 6
 	},
@@ -33,7 +33,7 @@ const meta: Meta<typeof ScrollSync> = {
 			</section>
 		)
 	]
-} satisfies Meta<typeof ScrollSync>;
+} satisfies Meta<typeof DualScrollSync>;
 
 export default meta;
 

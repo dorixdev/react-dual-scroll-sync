@@ -1,1 +1,1 @@
-export * from './useScrollSyncObserver';
+export * from './useDualScrollSyncObserver';

@@ -1,3 +1,3 @@
 import './scss/tokens.css.scss';
 
-export * from './components/ScrollSync';
+export * from './components/DualScrollSync';
