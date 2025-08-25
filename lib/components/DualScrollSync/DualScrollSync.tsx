@@ -2,15 +2,20 @@ import clsx from 'clsx';
 import { type CSSProperties, forwardRef } from 'react';
 
 import { useScrollSyncObserver } from '../../hooks';
-import styles from './ScrollSync.module.scss';
+import styles from './DualScrollSync.module.scss';
 import type {
-	ScrollSyncContentSectionProps,
-	ScrollSyncNavItemProps,
-	ScrollSyncProps
-} from './ScrollSync.types';
+	DualScrollSyncContentSectionProps,
+	DualScrollSyncNavItemProps,
+	DualScrollSyncProps
+} from './DualScrollSync.types';
 
-export function ScrollSync({ id, items, onItemClick, maxVisibleItems = 6 }: ScrollSyncProps) {
-	const baseMenuId = id ?? 'scroll-sync';
+export function DualScrollSync({
+	id,
+	items,
+	onItemClick,
+	maxVisibleItems = 6
+}: DualScrollSyncProps) {
+	const baseMenuId = id ?? 'dual-scroll-sync';
 	const navId = `${baseMenuId}-nav`;
 	const contentId = `${baseMenuId}-content`;
 
@@ -38,7 +43,7 @@ export function ScrollSync({ id, items, onItemClick, maxVisibleItems = 6 }: Scro
 				style={navStyle}
 			>
 				{items.map(({ sectionKey, label }) => (
-					<ScrollSync.NavItem
+					<DualScrollSync.NavItem
 						className={clsx(
 							styles.scrollSyncNavItem,
 							activeKey === sectionKey && styles.scrollSyncNavItemActive
@@ -62,7 +67,7 @@ export function ScrollSync({ id, items, onItemClick, maxVisibleItems = 6 }: Scro
 				ref={contentRef}
 			>
 				{items.map(({ sectionKey, label, children }) => (
-					<ScrollSync.ContentSection
+					<DualScrollSync.ContentSection
 						className={styles.scrollSyncContentSection}
 						parentId={contentId}
 						key={sectionKey}
@@ -73,14 +78,14 @@ export function ScrollSync({ id, items, onItemClick, maxVisibleItems = 6 }: Scro
 						sectionKey={sectionKey}
 					>
 						{children}
-					</ScrollSync.ContentSection>
+					</DualScrollSync.ContentSection>
 				))}
 			</section>
 		</section>
 	);
 }
 
-ScrollSync.NavItem = forwardRef<HTMLButtonElement, ScrollSyncNavItemProps>(
+DualScrollSync.NavItem = forwardRef<HTMLButtonElement, DualScrollSyncNavItemProps>(
 	function ScrollSyncOption({ parentId, onClick, sectionKey, label, className }, ref) {
 		const navItemId = `${parentId}-item-${sectionKey}`;
 
@@ -101,7 +106,7 @@ ScrollSync.NavItem = forwardRef<HTMLButtonElement, ScrollSyncNavItemProps>(
 	}
 );
 
-ScrollSync.ContentSection = forwardRef<HTMLElement, ScrollSyncContentSectionProps>(
+DualScrollSync.ContentSection = forwardRef<HTMLElement, DualScrollSyncContentSectionProps>(
 	function ScrollSyncSection({ parentId, sectionKey, label, children, className }, ref) {
 		const contentSectionId = `${parentId}-section-${sectionKey}`;
 
