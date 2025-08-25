@@ -1,23 +1,23 @@
 import { type PropsWithChildren } from 'react';
 
-type ScrollSyncBaseProps = {
+type DualScrollSyncBaseProps = {
 	label: string;
 	sectionKey: string;
 };
 
-export type ScrollSyncItem = PropsWithChildren<ScrollSyncBaseProps>;
+export type DualScrollSyncItem = PropsWithChildren<DualScrollSyncBaseProps>;
 
-export type ScrollSyncProps = {
+export type DualScrollSyncProps = {
 	/**
-	 * Unique identifier for the ScrollSync component.
-	 * @default 'scroll-sync'
+	 * Unique identifier for the DualScrollSync component.
+	 * @default 'dual-scroll-sync'
 	 */
 	id?: string;
 	/**
 	 * Array of `ScrollSyncItem` objects.
 	 * @default []
 	 */
-	items: ScrollSyncItem[];
+	items: DualScrollSyncItem[];
 	/**
 	 * Maximum visible items in the navigation menu. If the number of items exceeds this value, scrolling is activated.
 	 * @default 6
@@ -31,12 +31,12 @@ export type ScrollSyncProps = {
 	onItemClick?: (activeKey: string) => void;
 };
 
-export type ScrollSyncContentSectionProps = ScrollSyncItem & {
+export type DualScrollSyncContentSectionProps = DualScrollSyncItem & {
 	className?: string;
 	parentId?: string;
 };
 
-export type ScrollSyncNavItemProps = ScrollSyncBaseProps & {
+export type DualScrollSyncNavItemProps = DualScrollSyncBaseProps & {
 	className?: string;
 	parentId?: string;
 	onClick: () => void;
