@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.1.0...v1.1.1) (2025-08-25)
+
+### 📝 Documentation
+
+- :memo: add demo preview GIF for visual reference ([55f5e7a](https://github.com/dorixdev/react-dual-scroll-sync/commit/55f5e7a5cd4153eacd8ea21f943714d6439dea67))
+- :memo: update README with improved badge links and demo image ([a1c628b](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c628bd30dc68db04409b2351ccc0b21696e887))
+
 ## [1.1.0](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.0.0...v1.1.0) (2025-08-25)
 
 ### ✨ Features

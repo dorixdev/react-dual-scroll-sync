@@ -3,12 +3,26 @@
 A lightweight React library to synchronize a vertical navigation menu with scrollable content sections. Ideal for advanced catalogs, filter drawers, and any layout that needs a **sticky nav** that tracks the **visible section** and enables **smooth scroll**.
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@dorixdev/react-dual-scroll-sync"><img alt="npm" src="https://img.shields.io/npm/v/@dorixdev/react-dual-scroll-sync.svg"></a>
-  <a href="https://github.com/dorixdev/react-dual-scroll-sync/actions"><img alt="CI" src="https://github.com/dorixdev/react-dual-scroll-sync/workflows/Release%20to%20npm/badge.svg"></a>
-  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+  <a href="https://www.npmjs.com/package/@dorixdev/react-dual-scroll-sync">
+    <img alt="npm version" src="https://img.shields.io/npm/v/@dorixdev/react-dual-scroll-sync?logo=npm&color=cb3837">
+  </a>
+  <a href="https://github.com/dorixdev/react-dual-scroll-sync/actions/workflows/release.yml">
+    <img alt="build status" src="https://github.com/dorixdev/react-dual-scroll-sync/actions/workflows/release.yml/badge.svg?branch=main">
+  </a>
+	<a href="https://react-dual-scroll-sync.vercel.app">
+    <img alt="docs" src="https://img.shields.io/badge/docs-Storybook-ff4785?logo=storybook">
+  </a>
+  <a href="https://bundlephobia.com/package/@dorixdev/react-dual-scroll-sync">
+    <img alt="bundle size" src="https://img.shields.io/bundlephobia/minzip/@dorixdev/react-dual-scroll-sync?label=size&logo=webpack">
+  </a>
+	<a href="./LICENSE">
+    <img alt="license" src="https://img.shields.io/badge/License-MIT-blue.svg">
+  </a>
 </p>
 
----
+<p align="center">
+  <img alt="Demo" src="https://raw.githubusercontent.com/dorixdev/react-dual-scroll-sync/main/demo/preview.gif" width="720" />
+</p>
 
 ### 💡 Features
 
@@ -60,7 +74,7 @@ export default function Demo() {
 
 ## 📘 Documentation
 
-Explore all props, variations, and usage guidelines in the [Storybook docs](https://68a8bb27946b9332f33d8ff0-lqeqrqxzyr.chromatic.com/).
+Explore all props, variations, and usage guidelines in the [Storybook docs](https://react-dual-scroll-sync.vercel.app).
 
 ## License
 
