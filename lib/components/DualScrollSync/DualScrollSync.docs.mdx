@@ -1,4 +1,4 @@
-import * as ScrollSyncStories from './ScrollSync.stories.tsx';
+import * as DualScrollSyncStories from './DualScrollSync.stories.tsx';
 
 import {
 	ArgTypes,
@@ -12,17 +12,17 @@ import {
 	Title
 } from '@storybook/addon-docs/blocks';
 
-<Meta of={ScrollSyncStories} />
+<Meta of={DualScrollSyncStories} />
 
-<Title>ScrollSync - User guide</Title>
+<Title>DualScrollSync - User guide</Title>
 <Subtitle>Sync vertical navigation with scrollable content sections</Subtitle>
 
-**ScrollSync** is a UI component that synchronizes a vertical navigation menu with scrollable content panels, ideal for advanced catalogs or complex filters.
+**DualScrollSync** is a UI component that synchronizes a vertical navigation menu with scrollable content panels, ideal for advanced catalogs or complex filters.
 
 ### 📦 Import
 
 ```tsx
-import { ScrollSync } from '@dorixdev/scroll-sync';
+import { DualScrollSync } from '@dorixdev/scroll-sync';
 ```
 
 ### 💡 Features
@@ -33,7 +33,7 @@ import { ScrollSync } from '@dorixdev/scroll-sync';
 
 ### 🔧 Props
 
-<ArgTypes of={ScrollSyncStories.Default} />
+<ArgTypes of={DualScrollSyncStories.Default} />
 
 ### 🧩 Events & Callbacks
 
@@ -45,16 +45,16 @@ You can customize the styles by overriding the CSS variables defined in the pack
 
 ```css
 :root {
-	--scroll-sync-border-radius: 16px;
-	--scroll-sync-space-s: 8px;
-	--scroll-sync-space-m: 16px;
-	--scroll-sync-space-l: 24px;
-	--scroll-sync-border-color: #e0e0e0;
-	--scroll-sync-highlight-background-color: #e0e0e0;
-	--scroll-sync-highlight-foreground-color: #f5f5f5;
-	--scroll-sync-inactive-background-color: #6200ea;
-	--scroll-sync-transition: all 0.3s ease;
-	--scroll-sync-max-width-nav: 300px;
+	--dual-scroll-sync-border-radius: 16px;
+	--dual-scroll-sync-space-s: 8px;
+	--dual-scroll-sync-space-m: 16px;
+	--dual-scroll-sync-space-l: 24px;
+	--dual-scroll-sync-border-color: #e0e0e0;
+	--dual-scroll-sync-highlight-background-color: #e0e0e0;
+	--dual-scroll-sync-highlight-foreground-color: #f5f5f5;
+	--dual-scroll-sync-inactive-background-color: #6200ea;
+	--dual-scroll-sync-transition: all 0.3s ease;
+	--dual-scroll-sync-max-width-nav: 300px;
 }
 ```
 

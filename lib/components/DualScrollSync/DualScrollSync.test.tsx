@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, Mock, vi } from 'vitest';
 
 import { type UseScrollSyncObserverReturn } from '../../hooks';
-import { ScrollSync } from './ScrollSync';
+import { DualScrollSync } from './DualScrollSync';
 
 const scrollSyncInitialState: UseScrollSyncObserverReturn = {
 	activeKey: 's1',
@@ -17,11 +17,11 @@ const mockUseScrollSyncObserver: Mock<() => UseScrollSyncObserverReturn> = vi.fn
 	() => scrollSyncInitialState
 );
 
-vi.mock('../../hooks/useScrollSyncObserver', () => ({
+vi.mock('../../hooks/useDualScrollSyncObserver', () => ({
 	useScrollSyncObserver: () => mockUseScrollSyncObserver()
 }));
 
-describe('ScrollSync (with mocked hook)', () => {
+describe('DualScrollSync (with mocked hook)', () => {
 	const items = [
 		{ sectionKey: 's1', label: 'Section 1', children: <div>Content 1</div> },
 		{ sectionKey: 's2', label: 'Section 2', children: <div>Content 2</div> },
@@ -36,14 +36,14 @@ describe('ScrollSync (with mocked hook)', () => {
 	});
 
 	it('finds navItem and section by id and checks text', () => {
-		render(<ScrollSync items={items} />);
+		render(<DualScrollSync items={items} />);
 
-		const navItem = document.getElementById('scroll-sync-nav-item-s2');
+		const navItem = document.getElementById('dual-scroll-sync-nav-item-s2');
 
 		expect(navItem).toBeInTheDocument();
 		expect(navItem).toHaveTextContent('Section 2');
 
-		const section = document.getElementById('scroll-sync-content-section-s2');
+		const section = document.getElementById('dual-scroll-sync-content-section-s2');
 
 		expect(section).toBeInTheDocument();
 		expect(section).toHaveTextContent('Section 2');
@@ -56,7 +56,7 @@ describe('ScrollSync (with mocked hook)', () => {
 			activeKey: 's2'
 		});
 
-		render(<ScrollSync items={items} />);
+		render(<DualScrollSync items={items} />);
 
 		const section = screen.getByRole('button', { name: 'Section 2' });
 
@@ -72,7 +72,7 @@ describe('ScrollSync (with mocked hook)', () => {
 			onMenuItemSelect: handleMenuClickMock
 		});
 
-		render(<ScrollSync items={items} />);
+		render(<DualScrollSync items={items} />);
 
 		const section2Btn = screen.getByRole('button', { name: 'Section 2' });
 
@@ -84,7 +84,7 @@ describe('ScrollSync (with mocked hook)', () => {
 	it('calls onSectionChange when an option is clicked', () => {
 		const onSectionChangeMock = vi.fn();
 
-		render(<ScrollSync items={items} onItemClick={onSectionChangeMock} />);
+		render(<DualScrollSync items={items} onItemClick={onSectionChangeMock} />);
 		const section2Btn = screen.getByRole('button', { name: 'Section 2' });
 		fireEvent.click(section2Btn);
 
@@ -92,7 +92,7 @@ describe('ScrollSync (with mocked hook)', () => {
 	});
 
 	it('renders with default class names when no custom class names are provided', () => {
-		render(<ScrollSync items={items} id="test" />);
+		render(<DualScrollSync items={items} id="test" />);
 
 		const menu = document.getElementById('test');
 		const menuNav = document.getElementById('test-nav');

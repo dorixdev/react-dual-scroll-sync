@@ -22,7 +22,7 @@ export default defineConfig({
 		copyPublicDir: false,
 		lib: {
 			entry: path.resolve(__dirname, 'lib/index.ts'),
-			name: 'ScrollSync',
+			name: 'DualScrollSync',
 			formats: ['es', 'cjs'],
 			fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`
 		},
