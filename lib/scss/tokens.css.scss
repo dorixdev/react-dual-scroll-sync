@@ -1,14 +1,14 @@
 @use './tokens' as *;
 
 :root {
-	--scroll-sync-border-radius: #{$border-radius};
-	--scroll-sync-space-s: #{$space-s};
-	--scroll-sync-space-m: #{$space-m};
-	--scroll-sync-space-l: #{$space-l};
-	--scroll-sync-border-color: #{$border-color};
-	--scroll-sync-highlight-background-color: #{$highlight-background-color};
-	--scroll-sync-highlight-foreground-color: #{$highlight-foreground-color};
-	--scroll-sync-inactive-background-color: #{$inactive-background-color};
-	--scroll-sync-transition: #{$transition};
-	--scroll-sync-max-width-nav: #{$max-width-nav};
+	--dual-scroll-sync-border-radius: #{$border-radius};
+	--dual-scroll-sync-space-s: #{$space-s};
+	--dual-scroll-sync-space-m: #{$space-m};
+	--dual-scroll-sync-space-l: #{$space-l};
+	--dual-scroll-sync-border-color: #{$border-color};
+	--dual-scroll-sync-highlight-background-color: #{$highlight-background-color};
+	--dual-scroll-sync-highlight-foreground-color: #{$highlight-foreground-color};
+	--dual-scroll-sync-inactive-background-color: #{$inactive-background-color};
+	--dual-scroll-sync-transition: #{$transition};
+	--dual-scroll-sync-max-width-nav: #{$max-width-nav};
 }
