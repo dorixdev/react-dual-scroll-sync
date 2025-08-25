@@ -1,6 +1,6 @@
 {
 	"name": "@dorixdev/react-dual-scroll-sync",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"license": "MIT",
 	"description": "A lightweight React library to synchronize navigation menus with scrollable content sections.",
 	"type": "module",
