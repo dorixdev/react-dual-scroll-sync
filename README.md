@@ -2,35 +2,23 @@
 
 A lightweight React library to synchronize a vertical navigation menu with scrollable content sections. Ideal for advanced catalogs, filter drawers, and any layout that needs a **sticky nav** that tracks the **visible section** and enables **smooth scroll**.
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/@dorixdev/react-dual-scroll-sync">
-    <img alt="npm version" src="https://img.shields.io/npm/v/@dorixdev/react-dual-scroll-sync?logo=npm&color=cb3837">
-  </a>
-  <a href="https://github.com/dorixdev/react-dual-scroll-sync/actions/workflows/release.yml">
-    <img alt="build status" src="https://github.com/dorixdev/react-dual-scroll-sync/actions/workflows/release.yml/badge.svg?branch=main">
-  </a>
-	<a href="https://react-dual-scroll-sync.vercel.app">
-    <img alt="docs" src="https://img.shields.io/badge/docs-Storybook-ff4785?logo=storybook">
-  </a>
-  <a href="https://bundlephobia.com/package/@dorixdev/react-dual-scroll-sync">
-    <img alt="bundle size" src="https://img.shields.io/bundlephobia/minzip/@dorixdev/react-dual-scroll-sync?label=size&logo=webpack">
-  </a>
-	<a href="./LICENSE">
-    <img alt="license" src="https://img.shields.io/badge/License-MIT-blue.svg">
-  </a>
-</p>
+[![npm version](https://img.shields.io/npm/v/@dorixdev/react-dual-scroll-sync?logo=npm&color=cb3837)](https://www.npmjs.com/package/@dorixdev/react-dual-scroll-sync)
+[![Release to npm](https://github.com/dorixdev/react-dual-scroll-sync/actions/workflows/release.yml/badge.svg)](https://github.com/dorixdev/react-dual-scroll-sync/actions/workflows/release.yml)
+[![docs](https://img.shields.io/badge/docs-Storybook-ff4785?logo=storybook)](https://react-dual-scroll-sync.vercel.app)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@dorixdev/react-dual-scroll-sync?label=size&logo=webpack)](https://bundlephobia.com/package/@dorixdev/react-dual-scroll-sync)
+[![license](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
-<p align="center">
-  <img alt="Demo" src="https://raw.githubusercontent.com/dorixdev/react-dual-scroll-sync/main/demo/preview.gif" width="720" />
-</p>
-
-### 💡 Features
+## 💡 Features
 
 - 🔗 **Sync state** between a vertical nav and the currently visible content section
 - 🧭 **Programmatic scroll** to a section when a menu item is selected
 - ✨ **Active item highlighting** and nav auto-scroll to keep it in view
 - 🎨 **Themable styles**: override CSS variables to match your design
 - 🧪 **Typed** (TypeScript) & framework-agnostic CSS
+
+## 🎥 Demo
+
+<img alt="Demo" src="https://raw.githubusercontent.com/dorixdev/react-dual-scroll-sync/main/demo/preview.gif" width="360" />
 
 ## 📦 Installation
 

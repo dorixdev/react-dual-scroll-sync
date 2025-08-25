@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.1.1...v1.1.2) (2025-08-25)
+
+### 📝 Documentation
+
+- :memo: reorganize README structure and update demo image size ([e2630ef](https://github.com/dorixdev/react-dual-scroll-sync/commit/e2630ef4be1af5f8fc0b175c674ce688d67f0573))
+
 ## [1.1.1](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.1.0...v1.1.1) (2025-08-25)
 
 ### 📝 Documentation
