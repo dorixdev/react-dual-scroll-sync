@@ -19,27 +19,30 @@ import {
 
 **DualScrollSync** is a UI component that synchronizes a vertical navigation menu with scrollable content panels, ideal for advanced catalogs or complex filters.
 
-### 📦 Import
-
-```tsx
-import { DualScrollSync } from '@dorixdev/scroll-sync';
-```
-
-### 💡 Features
+## 💡 Features
 
 - Synchronizes the active state between navigation menu and visible content.
 - Enables smooth scrolling between sections.
 - Highlights the active menu item for better user orientation.
 
-### 🔧 Props
+## 📦 Import
+
+```tsx
+import { DualScrollSync } from '@dorixdev/react-dual-scroll-sync';
+
+// Add styles once in your app
+import '@dorixdev/react-dual-scroll-sync/styles.css';
+```
+
+## 🔧 Props
 
 <ArgTypes of={DualScrollSyncStories.Default} />
 
-### 🧩 Events & Callbacks
+## 🧩 Events & Callbacks
 
 `onItemClick`: Callback triggered when a menu item is clicked, receiving the active section key as an argument. This can be used for analytics or other side effects.
 
-### 🎨 Styling & Customization
+## 🎨 Styling & Customization
 
 You can customize the styles by overriding the CSS variables defined in the package. Here’s an example of how to do that in your CSS file:
 
@@ -58,7 +61,7 @@ You can customize the styles by overriding the CSS variables defined in the pack
 }
 ```
 
-### ⚙️ Best Practices & Limitations
+## ⚙️ Best Practices & Limitations
 
 - Use `sectionKey` to uniquely identify each section for proper synchronization.
 - Designed for responsive mobile-first layouts but adaptable to any size.
