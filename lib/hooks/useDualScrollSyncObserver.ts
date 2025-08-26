@@ -48,7 +48,7 @@ export const useScrollSyncObserver = () => {
 
 		const observerOptions: IntersectionObserverInit = {
 			root: contentContainer,
-			threshold: 0.5
+			threshold: [0.25, 1.0]
 		};
 
 		const handleIntersect: IntersectionObserverCallback = (entries) => {
