@@ -9,17 +9,17 @@ export type DualScrollSyncItem = PropsWithChildren<DualScrollSyncBaseProps>;
 
 export type DualScrollSyncProps = {
 	/**
-	 * Unique identifier for the DualScrollSync component.
+	 * Unique identifier for the DualScrollSync component. (Optional)
 	 * @default 'dual-scroll-sync'
 	 */
 	id?: string;
 	/**
-	 * Array of `ScrollSyncItem` objects.
+	 * Array of `DualScrollSyncItem` objects.
 	 * @default []
 	 */
 	items: DualScrollSyncItem[];
 	/**
-	 * Maximum visible items in the navigation menu. If the number of items exceeds this value, scrolling is activated.
+	 * Maximum visible items in the navigation menu. If the number of items exceeds this value, scrolling is activated. (Optional)
 	 * @default 6
 	 */
 	maxVisibleItems?: number;
