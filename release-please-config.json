@@ -4,7 +4,7 @@
 		".": {
 			"changelog-path": "CHANGELOG.md",
 			"include-component-in-tag": false,
-			"changelog-types": [
+			"changelog-sections": [
 				{ "type": "feat", "section": "✨ Features", "hidden": false },
 				{ "type": "fix", "section": "🐛 Bug Fixes", "hidden": false },
 				{ "type": "perf", "section": "⚡ Performance", "hidden": false },
