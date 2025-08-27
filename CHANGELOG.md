@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.1...v1.2.2) (2025-08-27)
+
+
+### Bug Fixes
+
+* sort versions and add title ([#11](https://github.com/dorixdev/react-dual-scroll-sync/issues/11)) ([2b22b66](https://github.com/dorixdev/react-dual-scroll-sync/commit/2b22b66a08c4b0c372c03c5e6a4c5d3349667d15))
+
 ## [1.2.1](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.0...v1.2.1) (2025-08-27)
 
 ### Bug Fixes
