@@ -4,6 +4,26 @@
 
 - :memo: reorganize README structure and update demo image size ([e2630ef](https://github.com/dorixdev/react-dual-scroll-sync/commit/e2630ef4be1af5f8fc0b175c674ce688d67f0573))
 
+## [1.2.0](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.1.2...v1.2.0) (2025-08-27)
+
+
+### Features
+
+* add Storybook manager config and improve component previews ([#3](https://github.com/dorixdev/react-dual-scroll-sync/issues/3)) ([6a13f9f](https://github.com/dorixdev/react-dual-scroll-sync/commit/6a13f9f311c9eaff823569e24e99f6c758af5f94))
+
+
+### Bug Fixes
+
+* **ci:** replace GITHUB_TOKEN to RELEASE_PLEASE_TOKEN ([#4](https://github.com/dorixdev/react-dual-scroll-sync/issues/4)) ([df8e4d1](https://github.com/dorixdev/react-dual-scroll-sync/commit/df8e4d1159c3be7f28bbb5196a0cfa7c773ab9c8))
+* **CI:** update release-please action ([#7](https://github.com/dorixdev/react-dual-scroll-sync/issues/7)) ([8e35746](https://github.com/dorixdev/react-dual-scroll-sync/commit/8e357464505bdf716115566dab70348205511045))
+* **DualScrollSync:** add title attribute for better accessibility ([6a13f9f](https://github.com/dorixdev/react-dual-scroll-sync/commit/6a13f9f311c9eaff823569e24e99f6c758af5f94))
+* **DualScrollSync:** refine nav item styles and active indicator ([6a13f9f](https://github.com/dorixdev/react-dual-scroll-sync/commit/6a13f9f311c9eaff823569e24e99f6c758af5f94))
+
+
+### Performance Improvements
+
+* **storybook:** update stories with new mock data (internal only) ([6a13f9f](https://github.com/dorixdev/react-dual-scroll-sync/commit/6a13f9f311c9eaff823569e24e99f6c758af5f94))
+
 ## [1.1.1](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.1.0...v1.1.1) (2025-08-25)
 
 ### 📝 Documentation
