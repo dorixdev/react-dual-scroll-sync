@@ -5,6 +5,15 @@ import { DualScrollSync } from '../DualScrollSync';
 import { MockContentSection } from './mocks';
 import { FILTER_GROUPS } from './mocks/MockFilterGroups';
 
+interface ExtendedArgs {
+	borderRadius?: number;
+	borderColor?: string;
+	highlightBackgroundColor?: string;
+	highlightForegroundColor?: string;
+	inactiveBackgroundColor?: string;
+	maxWidthNav?: number;
+}
+
 const meta: Meta<typeof DualScrollSync> = {
 	title: 'Components/DualScrollSync',
 	component: DualScrollSync,
@@ -37,16 +46,23 @@ export const Default: Story = {
 		maxVisibleItems: 6,
 		onItemClick: action('onItemClick')
 	},
+	decorators: [
+		(Story) => (
+			<section
+				style={{ height: '50dvh', maxWidth: '360px', maxHeight: '480px', minHeight: '320px' }}
+			>
+				<Story />
+			</section>
+		)
+	],
 	render: ({ items, ...args }) => (
-		<section style={{ height: '50dvh', maxWidth: '360px', maxHeight: '480px', minHeight: '320px' }}>
-			<DualScrollSync
-				{...args}
-				items={items?.map((item) => ({
-					...item,
-					children: <MockContentSection />
-				}))}
-			/>
-		</section>
+		<DualScrollSync
+			{...args}
+			items={items?.map((item) => ({
+				...item,
+				children: <MockContentSection />
+			}))}
+		/>
 	)
 };
 
@@ -58,16 +74,89 @@ export const FewSectionsExample: Story = {
 			{ sectionKey: 'section3', label: 'Section 3', children: '<Component />' }
 		]
 	},
+	decorators: [
+		(Story) => (
+			<section
+				style={{ height: '50dvh', maxWidth: '360px', maxHeight: '480px', minHeight: '320px' }}
+			>
+				<Story />
+			</section>
+		)
+	],
 	render: ({ items, ...args }) => (
-		<section style={{ height: '50dvh', maxWidth: '360px', maxHeight: '480px', minHeight: '320px' }}>
+		<DualScrollSync
+			items={items.map((item) => ({
+				...item,
+				children: <MockContentSection minHeight="480px" />
+			}))}
+			{...args}
+		/>
+	)
+};
+
+export const ThemingExample: Story & { args: ExtendedArgs; argTypes?: Record<string, unknown> } = {
+	name: 'Theming with CSS Variables',
+	argTypes: {
+		borderColor: { control: { type: 'color' } },
+		borderRadius: { control: { type: 'number', min: 0, max: 32, step: 2 } },
+		highlightBackgroundColor: { control: { type: 'color' } },
+		highlightForegroundColor: { control: { type: 'color' } },
+		inactiveBackgroundColor: { control: { type: 'color' } },
+		maxWidthNav: { control: { type: 'number', min: 60, max: 240, step: 10 } }
+	},
+	args: {
+		items: [
+			{ sectionKey: 's1', label: 'Label 1', children: '<Component />' },
+			{ sectionKey: 's2', label: 'Label 2', children: '<Component />' },
+			{ sectionKey: 's3', label: 'Label 3', children: '<Component />' },
+			{ sectionKey: 's4', label: 'Label 4', children: '<Component />' },
+			{ sectionKey: 's5', label: 'Label 5', children: '<Component />' },
+			{ sectionKey: 's6', label: 'Label 6', children: '<Component />' },
+			{ sectionKey: 's7', label: 'Label 7', children: '<Component />' },
+			{ sectionKey: 's8', label: 'Label 8', children: '<Component />' },
+			{ sectionKey: 's9', label: 'Label 9', children: '<Component />' },
+			{ sectionKey: 's10', label: 'Label 10', children: '<Component />' }
+		],
+		id: 'theming-example',
+		maxVisibleItems: 10,
+		borderColor: '#FFEDFA',
+		borderRadius: 0,
+		highlightBackgroundColor: '#FFB8E0',
+		highlightForegroundColor: '#BE5985',
+		inactiveBackgroundColor: '#FFEDFA',
+		maxWidthNav: 160
+	},
+	decorators: [
+		(Story) => (
+			<section
+				style={{ height: '50dvh', maxWidth: '360px', maxHeight: '480px', minHeight: '320px' }}
+			>
+				<Story />
+			</section>
+		)
+	],
+	render: ({ items, ...args }) => (
+		<>
+			<style>
+				{`
+					:root {
+						--dual-scroll-sync-border-color: ${(args as ExtendedArgs).borderColor};
+						--dual-scroll-sync-border-radius: ${(args as ExtendedArgs).borderRadius}px;
+						--dual-scroll-sync-highlight-background-color: ${(args as ExtendedArgs).highlightBackgroundColor};
+						--dual-scroll-sync-highlight-foreground-color: ${(args as ExtendedArgs).highlightForegroundColor};
+						--dual-scroll-sync-inactive-background-color: ${(args as ExtendedArgs).inactiveBackgroundColor};
+						--dual-scroll-sync-max-width-nav: ${(args as ExtendedArgs).maxWidthNav}px;
+					}
+				`}
+			</style>
 			<DualScrollSync
-				items={items.map((item) => ({
-					...item,
-					children: <MockContentSection minHeight="480px" />
-				}))}
 				{...args}
+				items={items?.map((item) => ({
+					...item,
+					children: <MockContentSection />
+				}))}
 			/>
-		</section>
+		</>
 	)
 };
 
