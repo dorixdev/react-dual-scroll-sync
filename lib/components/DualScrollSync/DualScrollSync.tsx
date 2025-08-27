@@ -118,7 +118,9 @@ DualScrollSync.ContentSection = forwardRef<HTMLElement, DualScrollSyncContentSec
 				id={contentSectionId}
 				ref={ref}
 			>
-				<span className={styles.scrollSyncContentSectionLabel}>{label}</span>
+				<span className={styles.scrollSyncContentSectionLabel} title={label}>
+					{label}
+				</span>
 				{children}
 			</article>
 		);
