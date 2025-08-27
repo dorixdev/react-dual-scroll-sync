@@ -7,11 +7,6 @@
 	height: 100%;
 	border: 1px solid var(--dual-scroll-sync-border-color, #{$border-color});
 	border-radius: var(--dual-scroll-sync-border-radius, #{$border-radius});
-
-	background-color: var(
-		--dual-scroll-sync-highlight-background-color,
-		#{$highlight-background-color}
-	);
 }
 
 .scrollSyncNav {
@@ -38,7 +33,10 @@
 
 	text-align: left;
 
-	background-color: var(--dual-scroll-sync-base-color, #{$inactive-background-color});
+	background-color: var(
+		--dual-scroll-sync-inactive-background-color,
+		#{$inactive-background-color}
+	);
 
 	transition: var(--dual-scroll-sync-transition, #{$transition});
 
@@ -74,7 +72,10 @@
 
 .scrollSyncNavItemActive {
 	position: relative;
-	background-color: var(--dual-scroll-sync-background-color, #{$highlight-background-color});
+	background-color: var(
+		--dual-scroll-sync-highlight-background-color,
+		#{$highlight-background-color}
+	);
 
 	span {
 		font-weight: bold;
@@ -102,6 +103,11 @@
 
 	height: 100%;
 	padding: var(--dual-scroll-sync-space-s, #{$space-s});
+
+	background-color: var(
+		--dual-scroll-sync-highlight-background-color,
+		#{$highlight-background-color}
+	);
 }
 
 .scrollSyncContentSection {
