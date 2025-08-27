@@ -32,7 +32,6 @@
 
 	width: 100%;
 	height: calc(100% / var(--menu-nav-visible-count));
-	min-height: 56px;
 	padding: var(--dual-scroll-sync-space-m, #{$space-m}) var(--dual-scroll-sync-space-s, #{$space-s});
 	border: none;
 	border-bottom: 1px solid var(--dual-scroll-sync-border-color, #{$border-color});
@@ -63,12 +62,8 @@
 }
 
 .scrollSyncNavItemLabel {
-	display: flex;
-	align-items: center;
-
-	height: 100%;
+	margin: auto 0;
 	padding: 0 var(--dual-scroll-sync-space-m, #{$space-m});
-
 	font-size: smaller;
 }
 
@@ -78,13 +73,24 @@
 }
 
 .scrollSyncNavItemActive {
+	position: relative;
 	background-color: var(--dual-scroll-sync-background-color, #{$highlight-background-color});
 
 	span {
-		border-left: 3px solid
-			var(--dual-scroll-sync-highlight-foreground-color, #{$highlight-foreground-color});
 		font-weight: bold;
 		color: var(--dual-scroll-sync-highlight-foreground-color, #{$highlight-foreground-color});
+
+		&::before {
+			content: '';
+
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			height: 100%;
+			border-left: 4px solid
+				var(--dual-scroll-sync-highlight-foreground-color, #{$highlight-foreground-color});
+		}
 	}
 }
 
