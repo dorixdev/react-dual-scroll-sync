@@ -15,6 +15,13 @@
 
 - **storybook:** update stories with new mock data (internal only) ([6a13f9f](https://github.com/dorixdev/react-dual-scroll-sync/commit/6a13f9f311c9eaff823569e24e99f6c758af5f94))
 
+## [1.2.1](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.0...v1.2.1) (2025-08-27)
+
+
+### Bug Fixes
+
+* remove --if-present flag ([#9](https://github.com/dorixdev/react-dual-scroll-sync/issues/9)) ([b6b9a10](https://github.com/dorixdev/react-dual-scroll-sync/commit/b6b9a101d28c4eb0dd0b7f34e02ce0efbb3a59c5))
+
 ## [1.1.2](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.1.1...v1.1.2) (2025-08-25)
 
 ### 📝 Documentation
