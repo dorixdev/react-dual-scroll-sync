@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.2...v1.2.3) (2025-08-27)
+
+
+### Performance Improvements
+
+* dual-scroll-styles ([#13](https://github.com/dorixdev/react-dual-scroll-sync/issues/13)) ([d3d4855](https://github.com/dorixdev/react-dual-scroll-sync/commit/d3d48551a0f07a9c4fe75a92838ea56a06c6d5f6))
+
 ## [1.2.2](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.1...v1.2.2) (2025-08-27)
 
 
