@@ -19,7 +19,7 @@ export function DualScrollSync({
 	const navId = `${baseMenuId}-nav`;
 	const contentId = `${baseMenuId}-content`;
 
-	const visibleItemsCount = Math.min(items.length, maxVisibleItems || 1);
+	const visibleItemsCount = Math.min(items.length, maxVisibleItems);
 
 	const navStyle: CSSProperties = {
 		['--menu-nav-visible-count' as string]: visibleItemsCount
@@ -54,6 +54,7 @@ export function DualScrollSync({
 						onClick={() => handleMenuItemClick(sectionKey)}
 						sectionKey={sectionKey}
 						ref={(navItemRef) => {
+							if (!navItemRef) return;
 							navItemRefs.current[sectionKey] = navItemRef;
 						}}
 					/>
@@ -73,6 +74,7 @@ export function DualScrollSync({
 						key={sectionKey}
 						label={label}
 						ref={(contentRef) => {
+							if (!contentRef) return;
 							sectionRefs.current[sectionKey] = contentRef;
 						}}
 						sectionKey={sectionKey}
@@ -92,7 +94,6 @@ DualScrollSync.NavItem = forwardRef<HTMLButtonElement, DualScrollSyncNavItemProp
 		return (
 			<button
 				className={className}
-				data-option={sectionKey}
 				data-testid={navItemId}
 				id={navItemId}
 				onClick={onClick}
