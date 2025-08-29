@@ -2,17 +2,15 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { scrollToSectionView } from '../utils';
 
-type NullableElementRef = HTMLElement | null;
-
 export const useScrollSyncObserver = () => {
 	const [activeKey, setActiveKey] = useState<string | null>(null);
 	const [isScrollingByClick, setIsScrollingByClick] = useState<boolean>(false);
 
-	const navRef = useRef<NullableElementRef>(null);
-	const contentRef = useRef<NullableElementRef>(null);
-	const navItemRefs = useRef<Record<string, NullableElementRef>>({});
-	const sectionRefs = useRef<Record<string, NullableElementRef>>({});
-	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const navRef = useRef<HTMLElement>(null);
+	const contentRef = useRef<HTMLElement>(null);
+	const navItemRefs = useRef<Record<string, HTMLElement>>({});
+	const sectionRefs = useRef<Record<string, HTMLElement>>({});
+	const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
 	const isClickScrollingRef = useRef<boolean>(false);
 
 	const visibleKeys = useMemo(() => new Set<string>(), []);
@@ -53,8 +51,7 @@ export const useScrollSyncObserver = () => {
 
 		const handleIntersect: IntersectionObserverCallback = (entries) => {
 			for (const entry of entries) {
-				const key = entry.target.getAttribute('data-section');
-				if (!key) continue;
+				const key = String(entry.target.getAttribute('data-section'));
 				if (entry.isIntersecting) visibleKeys.add(key);
 				else visibleKeys.delete(key);
 			}
@@ -62,7 +59,6 @@ export const useScrollSyncObserver = () => {
 			const sortedKeys = [...visibleKeys].sort((a, b) => {
 				const ra = sectionRefs.current[a]?.getBoundingClientRect();
 				const rb = sectionRefs.current[b]?.getBoundingClientRect();
-				if (!ra || !rb) return 0;
 				return ra.top - rb.top;
 			});
 
@@ -79,11 +75,7 @@ export const useScrollSyncObserver = () => {
 
 		const observer = new IntersectionObserver(handleIntersect, observerOptions);
 
-		Object.entries(sectionRefs.current).forEach(([key, el]) => {
-			if (!el) return;
-			el.setAttribute('data-section', key);
-			observer.observe(el);
-		});
+		Object.values(sectionRefs.current).forEach((el) => observer.observe(el));
 	}, [visibleKeys]);
 
 	return {
