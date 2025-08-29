@@ -2,38 +2,36 @@
 
 ## [1.2.3](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.2...v1.2.3) (2025-08-27)
 
+### ⚡ Performance Improvements
 
-### Performance Improvements
-
-* dual-scroll-styles ([#13](https://github.com/dorixdev/react-dual-scroll-sync/issues/13)) ([d3d4855](https://github.com/dorixdev/react-dual-scroll-sync/commit/d3d48551a0f07a9c4fe75a92838ea56a06c6d5f6))
+- dual-scroll-styles ([#13](https://github.com/dorixdev/react-dual-scroll-sync/issues/13)) ([d3d4855](https://github.com/dorixdev/react-dual-scroll-sync/commit/d3d48551a0f07a9c4fe75a92838ea56a06c6d5f6))
 
 ## [1.2.2](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.1...v1.2.2) (2025-08-27)
 
+### 🐛 Bug Fixes
 
-### Bug Fixes
-
-* sort versions and add title ([#11](https://github.com/dorixdev/react-dual-scroll-sync/issues/11)) ([2b22b66](https://github.com/dorixdev/react-dual-scroll-sync/commit/2b22b66a08c4b0c372c03c5e6a4c5d3349667d15))
+- sort versions and add title ([#11](https://github.com/dorixdev/react-dual-scroll-sync/issues/11)) ([2b22b66](https://github.com/dorixdev/react-dual-scroll-sync/commit/2b22b66a08c4b0c372c03c5e6a4c5d3349667d15))
 
 ## [1.2.1](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.0...v1.2.1) (2025-08-27)
 
-### Bug Fixes
+### 🐛 Bug Fixes
 
 - remove --if-present flag ([#9](https://github.com/dorixdev/react-dual-scroll-sync/issues/9)) ([b6b9a10](https://github.com/dorixdev/react-dual-scroll-sync/commit/b6b9a101d28c4eb0dd0b7f34e02ce0efbb3a59c5))
 
 ## [1.2.0](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.1.2...v1.2.0) (2025-08-27)
 
-### Features
+### ✨ Features
 
 - add Storybook manager config and improve component previews ([#3](https://github.com/dorixdev/react-dual-scroll-sync/issues/3)) ([6a13f9f](https://github.com/dorixdev/react-dual-scroll-sync/commit/6a13f9f311c9eaff823569e24e99f6c758af5f94))
 
-### Bug Fixes
+### 🐛 Bug Fixes
 
 - **ci:** replace GITHUB_TOKEN to RELEASE_PLEASE_TOKEN ([#4](https://github.com/dorixdev/react-dual-scroll-sync/issues/4)) ([df8e4d1](https://github.com/dorixdev/react-dual-scroll-sync/commit/df8e4d1159c3be7f28bbb5196a0cfa7c773ab9c8))
 - **CI:** update release-please action ([#7](https://github.com/dorixdev/react-dual-scroll-sync/issues/7)) ([8e35746](https://github.com/dorixdev/react-dual-scroll-sync/commit/8e357464505bdf716115566dab70348205511045))
 - **DualScrollSync:** add title attribute for better accessibility ([6a13f9f](https://github.com/dorixdev/react-dual-scroll-sync/commit/6a13f9f311c9eaff823569e24e99f6c758af5f94))
 - **DualScrollSync:** refine nav item styles and active indicator ([6a13f9f](https://github.com/dorixdev/react-dual-scroll-sync/commit/6a13f9f311c9eaff823569e24e99f6c758af5f94))
 
-### Performance Improvements
+### ⚡ Performance Improvements
 
 - **storybook:** update stories with new mock data (internal only) ([6a13f9f](https://github.com/dorixdev/react-dual-scroll-sync/commit/6a13f9f311c9eaff823569e24e99f6c758af5f94))
 
