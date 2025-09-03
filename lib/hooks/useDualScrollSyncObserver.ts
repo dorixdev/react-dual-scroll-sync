@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { scrollToSectionView } from '../utils';
+import { scrollToSectionView } from '@/utils';
 
 export const useScrollSyncObserver = () => {
 	const [activeKey, setActiveKey] = useState<string | null>(null);

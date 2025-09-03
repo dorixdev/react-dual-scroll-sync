@@ -1,10 +1,16 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { DualScrollSync } from '../components/DualScrollSync';
-import { IntersectionObserverMock } from '../setupTests';
+import { IntersectionObserverMock } from '@/setupTests';
 
-export function mockRect(el: Element, rect: Partial<DOMRect>) {
+async function importDualScrollSyncModule() {
+	vi.resetModules();
+	vi.doUnmock('./useDualScrollSyncContext');
+	const { DualScrollSync } = await import('@/components/DualScrollSync');
+	return { DualScrollSync };
+}
+
+function mockRect(el: Element, rect: Partial<DOMRect>) {
 	const base: DOMRect = {
 		x: 0,
 		y: 0,
@@ -36,7 +42,9 @@ const options = [
 	}
 ];
 
-describe('implementation of useScrollSyncObserver', () => {
+describe('implementation of useScrollSyncObserver', async () => {
+	const { DualScrollSync } = await importDualScrollSyncModule();
+
 	beforeEach(() => {
 		vi.useFakeTimers();
 		IntersectionObserverMock.instances = [];
