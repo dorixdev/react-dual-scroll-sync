@@ -1,6 +1,7 @@
 /// <reference types="vitest/config" />
 
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
@@ -53,6 +54,18 @@ export default defineConfig({
 			],
 			provider: 'v8',
 			reporter: ['html', 'clover', 'json', 'text', 'text-summary']
+		}
+	},
+	resolve: {
+		alias: {
+			'@': fileURLToPath(new URL('./lib', import.meta.url))
+		}
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				loadPaths: [fileURLToPath(new URL('./lib', import.meta.url))]
+			}
 		}
 	}
 });

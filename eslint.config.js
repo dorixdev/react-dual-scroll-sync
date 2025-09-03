@@ -11,33 +11,34 @@ import tseslint from 'typescript-eslint';
 import { globalIgnores } from 'eslint/config';
 
 export default tseslint.config(
-  [
-    globalIgnores(['dist']),
-    {
-      files: ['**/*.{ts,tsx}'],
-      plugins: {
-        import: importPlugin,
-        'simple-import-sort': simpleImportSort
-      },
-      extends: [
-        js.configs.recommended,
-        tseslint.configs.recommended,
-        reactHooks.configs['recommended-latest'],
-        reactRefresh.configs.vite
-      ],
-      languageOptions: {
-        ecmaVersion: 2020,
-        globals: globals.browser
-      },
-      rules: {
-        'import/extensions': 'off',
-        'import/first': 'error',
-        'import/newline-after-import': 'error',
-        'import/no-duplicates': 'error',
-        'simple-import-sort/exports': 'error',
-        'simple-import-sort/imports': 'error'
-      }
-    }
-  ],
-  storybook.configs['flat/recommended']
+	[
+		globalIgnores(['dist', 'storybook-static']),
+		{
+			files: ['**/*.{ts,tsx}'],
+			plugins: {
+				import: importPlugin,
+				'simple-import-sort': simpleImportSort
+			},
+			extends: [
+				js.configs.recommended,
+				tseslint.configs.recommended,
+				reactHooks.configs['recommended-latest'],
+				reactRefresh.configs.vite
+			],
+			languageOptions: {
+				ecmaVersion: 2020,
+				globals: globals.browser
+			},
+			rules: {
+				'import/extensions': 'off',
+				'import/first': 'error',
+				'import/newline-after-import': 'error',
+				'import/no-duplicates': 'error',
+				'simple-import-sort/exports': 'error',
+				'simple-import-sort/imports': 'error',
+				'@typescript-eslint/consistent-type-imports': 'error'
+			}
+		}
+	],
+	storybook.configs['flat/recommended']
 );
