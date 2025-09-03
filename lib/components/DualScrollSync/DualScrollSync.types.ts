@@ -1,4 +1,4 @@
-import { type PropsWithChildren } from 'react';
+import { type CSSProperties, type PropsWithChildren } from 'react';
 
 import type { DualScrollSync } from './DualScrollSync';
 import type { DualScrollSyncContent } from './DualScrollSyncContent';
@@ -9,7 +9,7 @@ import type { DualScrollSyncNavItem } from './DualScrollSyncNavItem';
 
 export type DualScrollSyncStyleProps = {
 	className?: string;
-	style?: React.CSSProperties;
+	style?: CSSProperties;
 };
 
 export type DualScrollSyncOptions = {

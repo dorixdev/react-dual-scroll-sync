@@ -1,4 +1,5 @@
 import { renderHook, waitFor } from '@testing-library/react';
+import type { FC } from 'react';
 import { vi } from 'vitest';
 
 import { DualScrollSyncContent } from '@/components/DualScrollSync/DualScrollSyncContent';
@@ -6,8 +7,8 @@ import { DualScrollSyncNav } from '@/components/DualScrollSync/DualScrollSyncNav
 
 import { useValidateChildren } from './useValidateChildren';
 
-const NavItemStub: React.FC<{ sectionKey: string }> = () => null;
-const ContentSectionStub: React.FC<{ sectionKey: string }> = () => null;
+const NavItemStub: FC<{ sectionKey: string }> = () => null;
+const ContentSectionStub: FC<{ sectionKey: string }> = () => null;
 
 describe('useValidateChildren', () => {
 	let warnSpy: ReturnType<typeof vi.spyOn>;

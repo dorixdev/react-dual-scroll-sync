@@ -15,7 +15,7 @@ import type { DualScrollSyncNavItemProps } from '@/components/DualScrollSync/Dua
 
 interface UseValidateChildrenProps {
 	items?: DualScrollSyncItem[];
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 export const useValidateChildren = ({ items, children }: UseValidateChildrenProps) => {
