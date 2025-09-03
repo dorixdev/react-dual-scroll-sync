@@ -1,0 +1,100 @@
+import * as DualScrollSyncStories from './DualScrollSync.stories.tsx';
+
+import {
+	ArgTypes,
+	Canvas,
+	Controls,
+	Meta,
+	Primary,
+	Source,
+	Stories,
+	Story,
+	Subtitle,
+	Title
+} from '@storybook/addon-docs/blocks';
+
+<Meta of={DualScrollSyncStories} />
+
+<Title>DualScrollSync - User guide</Title>
+<Subtitle>Sync vertical navigation with scrollable content sections</Subtitle>
+
+**DualScrollSync** is a UI component that synchronizes a vertical navigation menu with scrollable content panels, ideal for advanced catalogs or complex filters.
+
+## 💡 Features
+
+- Synchronizes the active state between navigation menu and visible content.
+- Enables smooth scrolling between sections.
+- Highlights the active menu item for better user orientation.
+- **Data driven** and **declarative** usage options.
+
+## 📦 Import
+
+```tsx
+import { DualScrollSync } from '@dorixdev/react-dual-scroll-sync';
+
+// Add styles once in your app
+import '@dorixdev/react-dual-scroll-sync/styles.css';
+```
+
+## 🔧 Props
+
+<ArgTypes of={DualScrollSyncStories.Default} />
+
+## 🧩 Events & Callbacks
+
+`onItemClick`: Callback triggered when a menu item is clicked, receiving the active section key as an argument. This can be used for analytics or other side effects.
+
+## 🎨 Styling & Customization
+
+You can customize the styles by overriding the CSS variables defined in the package. Here’s an example of how to do that in your CSS file:
+
+```css
+:root {
+	--dual-scroll-sync-border-radius: 16px;
+	--dual-scroll-sync-space-s: 8px;
+	--dual-scroll-sync-space-m: 16px;
+	--dual-scroll-sync-space-l: 24px;
+	--dual-scroll-sync-border-color: #e0e0e0;
+	--dual-scroll-sync-highlight-background-color: #e0e0e0;
+	--dual-scroll-sync-highlight-foreground-color: #f5f5f5;
+	--dual-scroll-sync-inactive-background-color: #6200ea;
+	--dual-scroll-sync-transition: all 0.3s ease;
+	--dual-scroll-sync-max-width-nav: 300px;
+}
+```
+
+## ⚙️ Best Practices & Limitations
+
+- Use `sectionKey` to uniquely identify each section for proper synchronization.
+- Designed for responsive mobile-first layouts but adaptable to any size.
+- Works best when content items are tall enough to require scrolling, ensuring the menu remains useful.
+
+## 🧱 Patterns
+
+The following examples demonstrate both data-driven and declarative approaches to using the DualScrollSync component effectively.
+
+### Data-Driven
+
+To create a data-driven DualScrollSync, define your sections in an array and map over them to generate the navigation items and content sections.
+
+Use cases:
+
+- Dynamic content generation
+- Integration with CMS or APIs
+
+<Canvas of={DualScrollSyncStories.Default}>
+	<Story />
+</Canvas>
+
+### Declarative
+
+Define your sections directly in the JSX structure for a more straightforward approach. Ensure each section has a unique `sectionKey` and corresponding `NavItem` for synchronization.
+
+Use cases:
+
+- Static content
+- More control over structure
+
+<Canvas of={DualScrollSyncStories.DeclarativeExample}>
+	<Story />
+</Canvas>

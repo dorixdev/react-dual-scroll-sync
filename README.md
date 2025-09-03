@@ -8,6 +8,17 @@ A lightweight React library to synchronize a vertical navigation menu with scrol
 [![bundle size](https://img.shields.io/bundlephobia/minzip/@dorixdev/react-dual-scroll-sync?label=size&logo=webpack)](https://bundlephobia.com/package/@dorixdev/react-dual-scroll-sync)
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
+## 📑 Table of Contents
+
+- [Features](#-features)
+- [Demo](#-demo)
+- [Installation](#-installation)
+- [Styles](#-styles)
+- [Quick Start](#-quick-start)
+- [Props Overview](#-props-overview)
+- [Customization](#-customization)
+- [Docs](#-documentation)
+
 ## 💡 Features
 
 - 🔗 **Sync state** between a vertical nav and the currently visible content section
@@ -49,16 +60,54 @@ const items = [
 ];
 
 export default function Demo() {
-	return (
-		<DualScrollSync
-			id="filters"
-			items={items}
-			maxVisibleItems={6}
-			onItemClick={(key) => console.log('Selected', key)}
-		/>
-	);
+	return <DualScrollSync items={items} />;
 }
 ```
+
+## 🧩 Usage Patterns
+
+DualScrollSync can be used in two main ways: **data-driven** and **declarative**.
+
+### Data-Driven
+
+Define your sections in an array and let the component generate both nav items and content.
+
+✅ Best for dynamic data (e.g. from CMS or API).
+
+```tsx
+const items = [
+	{ sectionKey: 'intro', label: 'Introduction', children: <p>...</p> },
+	{ sectionKey: 'details', label: 'Details', children: <p>...</p> }
+];
+
+<DualScrollSync items={items} onItemClick={(k) => console.log(k)} />;
+```
+
+### Declarative
+
+Write the structure directly in JSX using `DualScrollSync.NavItem` and `DualScrollSync.ContentSection`.
+
+✅ Best for static pages where you want **full control**.
+
+```tsx
+<DualScrollSync>
+	<DualScrollSync.Nav>
+		<DualScrollSync.NavItem sectionKey="a">Section A</DualScrollSync.NavItem>
+		<DualScrollSync.NavItem sectionKey="b">Section B</DualScrollSync.NavItem>
+	</DualScrollSync.Nav>
+
+	<DualScrollSync.Content>
+		<DualScrollSync.ContentSection sectionKey="a">...</DualScrollSync.ContentSection>
+		<DualScrollSync.ContentSection sectionKey="b">...</DualScrollSync.ContentSection>
+	</DualScrollSync.Content>
+</DualScrollSync>
+```
+
+## ⚖️ When to use
+
+✅ Long scrollable pages with sticky nav  
+✅ Catalog filters, docs sidebars, multi-section layouts  
+❌ Very short pages (anchors may suffice)
 
 ## 📘 Documentation
 
