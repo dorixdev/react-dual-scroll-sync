@@ -1,13 +1,25 @@
 import { type PropsWithChildren } from 'react';
 
-type DualScrollSyncBaseProps = {
+import type { DualScrollSync } from './DualScrollSync';
+import type { DualScrollSyncContent } from './DualScrollSyncContent';
+import type { DualScrollSyncContentSection } from './DualScrollSyncContentSection';
+import type { DualScrollSyncLabel } from './DualScrollSyncLabel';
+import type { DualScrollSyncNav } from './DualScrollSyncNav';
+import type { DualScrollSyncNavItem } from './DualScrollSyncNavItem';
+
+export type DualScrollSyncStyleProps = {
+	className?: string;
+	style?: React.CSSProperties;
+};
+
+export type DualScrollSyncOptions = {
 	label: string;
 	sectionKey: string;
 };
 
-export type DualScrollSyncItem = PropsWithChildren<DualScrollSyncBaseProps>;
+export type DualScrollSyncItem = PropsWithChildren<DualScrollSyncOptions>;
 
-export type DualScrollSyncProps = {
+export type DualScrollSyncProps = PropsWithChildren<{
 	/**
 	 * Unique identifier for the DualScrollSync component. (Optional)
 	 * @default 'dual-scroll-sync'
@@ -15,9 +27,10 @@ export type DualScrollSyncProps = {
 	id?: string;
 	/**
 	 * Array of `DualScrollSyncItem` objects.
+	 * If provided, the component will auto-generate the navigation menu and content sections and ignore any children passed directly to it. (Optional)
 	 * @default []
 	 */
-	items: DualScrollSyncItem[];
+	items?: DualScrollSyncItem[];
 	/**
 	 * Maximum visible items in the navigation menu. If the number of items exceeds this value, scrolling is activated. (Optional)
 	 * @default 6
@@ -29,15 +42,12 @@ export type DualScrollSyncProps = {
 	 * @default () => {}
 	 */
 	onItemClick?: (activeKey: string) => void;
-};
+}>;
 
-export type DualScrollSyncContentSectionProps = DualScrollSyncItem & {
-	className?: string;
-	parentId?: string;
-};
-
-export type DualScrollSyncNavItemProps = DualScrollSyncBaseProps & {
-	className?: string;
-	parentId?: string;
-	onClick: () => void;
+export type DualScrollSyncType = typeof DualScrollSync & {
+	Nav: typeof DualScrollSyncNav;
+	NavItem: typeof DualScrollSyncNavItem;
+	Content: typeof DualScrollSyncContent;
+	ContentSection: typeof DualScrollSyncContentSection;
+	Label: typeof DualScrollSyncLabel;
 };
