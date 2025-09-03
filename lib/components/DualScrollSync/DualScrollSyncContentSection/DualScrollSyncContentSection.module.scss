@@ -1,0 +1,13 @@
+@use '@/scss/tokens.scss' as *;
+
+.scrollSyncContentSection {
+	display: flex;
+	flex-direction: column;
+	gap: var(--dual-scroll-sync-space-l, #{$space-l});
+
+	height: auto;
+	padding: var(--dual-scroll-sync-space-m, #{$space-m});
+	border-radius: var(--dual-scroll-sync-border-radius, #{$border-radius});
+
+	transition: background-color 0.3s ease-in-out;
+}

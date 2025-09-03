@@ -1,0 +1,11 @@
+@use '@/scss/tokens.scss' as *;
+
+.scrollSyncNav {
+	overflow-y: auto;
+	width: 100%;
+	max-width: var(--dual-scroll-sync-max-width-nav, #{$max-width-nav});
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
