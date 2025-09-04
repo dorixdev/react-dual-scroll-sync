@@ -6,14 +6,19 @@ import { DualScrollSyncContext } from '@/contexts';
 import { useScrollSyncObserver, useValidateChildren } from '@/hooks';
 
 import styles from './DualScrollSync.module.scss';
-import type { DualScrollSyncProps } from './DualScrollSync.types';
+import type { DualScrollSyncProps, DualScrollSyncType } from './DualScrollSync.types';
 import { DualScrollSyncContent } from './DualScrollSyncContent';
 import { DualScrollSyncContentSection } from './DualScrollSyncContentSection/DualScrollSyncContentSection';
 import { DualScrollSyncLabel } from './DualScrollSyncLabel/DualScrollSyncLabel';
 import { DualScrollSyncNav } from './DualScrollSyncNav';
 import { DualScrollSyncNavItem } from './DualScrollSyncNavItem';
 
-export const DualScrollSync: FC<DualScrollSyncProps> = ({ children, id, items, onItemClick }) => {
+export const DualScrollSyncBase: FC<DualScrollSyncProps> = ({
+	children,
+	id,
+	items,
+	onItemClick
+}) => {
 	const baseId = id ?? 'dual-scroll-sync';
 	const navId = `${baseId}-nav`;
 	const contentId = `${baseId}-content`;
@@ -80,4 +85,12 @@ export const DualScrollSync: FC<DualScrollSyncProps> = ({ children, id, items, o
 	);
 };
 
-DualScrollSync.displayName = 'DualScrollSync';
+DualScrollSyncBase.displayName = 'DualScrollSync';
+
+export const DualScrollSync: DualScrollSyncType = Object.assign(DualScrollSyncBase, {
+	Nav: DualScrollSyncNav,
+	NavItem: DualScrollSyncNavItem,
+	Content: DualScrollSyncContent,
+	ContentSection: DualScrollSyncContentSection,
+	Label: DualScrollSyncLabel
+});
