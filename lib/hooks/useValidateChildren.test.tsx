@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import type { FC } from 'react';
+import { act, type FC } from 'react';
 import { vi } from 'vitest';
 
 import { DualScrollSyncContent } from '@/components/DualScrollSync/DualScrollSyncContent';
@@ -22,17 +22,20 @@ describe('useValidateChildren', () => {
 		warnSpy.mockRestore();
 	});
 
-	it('should not log warnings when items prop is provided', () => {
+	it('should not log warnings when items prop is provided', async () => {
 		const items = [
 			{ sectionKey: 'section1', label: 'Section 1', children: <div>Content 1</div> },
 			{ sectionKey: 'section2', label: 'Section 2', children: <div>Content 2</div> }
 		];
 
-		renderHook(() => useValidateChildren({ items, children: null }));
-		expect(warnSpy).not.toHaveBeenCalled();
+		act(() => renderHook(() => useValidateChildren({ items, children: null })));
+
+		await waitFor(() => {
+			expect(warnSpy).toHaveBeenCalledTimes(0);
+		});
 	});
 
-	it('should not log warnings when NavItems and ContentSections match', () => {
+	it('should not log warnings when NavItems and ContentSections match', async () => {
 		const children = (
 			<>
 				<DualScrollSyncNav>
@@ -46,8 +49,11 @@ describe('useValidateChildren', () => {
 			</>
 		);
 
-		renderHook(() => useValidateChildren({ children, items: undefined }));
-		expect(warnSpy).not.toHaveBeenCalled();
+		act(() => renderHook(() => useValidateChildren({ children, items: undefined })));
+
+		await waitFor(() => {
+			expect(warnSpy).toHaveBeenCalledTimes(0);
+		});
 	});
 
 	it('should log warnings for missing ContentSections', async () => {
@@ -63,7 +69,7 @@ describe('useValidateChildren', () => {
 			</>
 		);
 
-		renderHook(() => useValidateChildren({ children, items: undefined }));
+		act(() => renderHook(() => useValidateChildren({ children, items: undefined })));
 
 		await waitFor(() => {
 			expect(warnSpy).toHaveBeenCalledWith(
@@ -85,7 +91,7 @@ describe('useValidateChildren', () => {
 			</>
 		);
 
-		renderHook(() => useValidateChildren({ children, items: undefined }));
+		act(() => renderHook(() => useValidateChildren({ children, items: undefined })));
 
 		await waitFor(() => {
 			expect(warnSpy).toHaveBeenCalledWith('[DualScrollSync] Missing NavItem for "section2"');
@@ -107,7 +113,7 @@ describe('useValidateChildren', () => {
 			</div>
 		);
 
-		renderHook(() => useValidateChildren({ children, items: undefined }));
+		act(() => renderHook(() => useValidateChildren({ children, items: undefined })));
 
 		await waitFor(() => {
 			expect(warnSpy).toHaveBeenCalledWith(
@@ -116,10 +122,13 @@ describe('useValidateChildren', () => {
 		});
 	});
 
-	it('should not log warnings for string children', () => {
+	it('should not log warnings for string children', async () => {
 		const children = <span>Hello World</span>;
 
-		renderHook(() => useValidateChildren({ children, items: undefined }));
-		expect(warnSpy).not.toHaveBeenCalled();
+		act(() => renderHook(() => useValidateChildren({ children, items: undefined })));
+
+		await waitFor(() => {
+			expect(warnSpy).toHaveBeenCalledTimes(0);
+		});
 	});
 });

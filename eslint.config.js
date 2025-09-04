@@ -2,6 +2,7 @@
 import storybook from 'eslint-plugin-storybook';
 import importPlugin from 'eslint-plugin-import';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import vitestPlugin from '@vitest/eslint-plugin';
 
 import js from '@eslint/js';
 import globals from 'globals';
@@ -38,6 +39,18 @@ export default tseslint.config(
 				'simple-import-sort/imports': 'error',
 				'@typescript-eslint/consistent-type-imports': 'error'
 			}
+		},
+		{
+			files: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],
+			plugins: { vitest: vitestPlugin },
+			...vitestPlugin.configs.recommended,
+			languageOptions: {
+				globals: {
+					...vitestPlugin.environments.env.globals
+				}
+			},
+			settings: { vitest: { typecheck: true } },
+			rules: { 'vitest/expect-expect': 'error' }
 		}
 	],
 	storybook.configs['flat/recommended']

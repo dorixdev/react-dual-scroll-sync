@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react';
 
-import { DualScrollSync } from './DualScrollSync';
+import { DualScrollSyncBase } from './DualScrollSync';
 
 describe('DualScrollSync', () => {
 	it('should render children correctly', () => {
 		const { getByTestId } = render(
-			<DualScrollSync>
+			<DualScrollSyncBase>
 				<div>Test Content</div>
-			</DualScrollSync>
+			</DualScrollSyncBase>
 		);
 
 		expect(getByTestId('dual-scroll-sync')).toBeInTheDocument();
@@ -15,9 +15,9 @@ describe('DualScrollSync', () => {
 
 	it('should render with provided id', () => {
 		const { getByTestId } = render(
-			<DualScrollSync id="custom-id">
+			<DualScrollSyncBase id="custom-id">
 				<div>Test Content</div>
-			</DualScrollSync>
+			</DualScrollSyncBase>
 		);
 
 		expect(getByTestId('custom-id')).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe('DualScrollSync', () => {
 			{ label: 'Item 2', sectionKey: 's2' }
 		];
 
-		const { getByTestId } = render(<DualScrollSync items={items} id="test" />);
+		const { getByTestId } = render(<DualScrollSyncBase items={items} id="test" />);
 
 		expect(getByTestId('test-nav-id')).toBeInTheDocument();
 		expect(getByTestId('test-nav-id-item-s1')).toBeInTheDocument();
@@ -41,9 +41,9 @@ describe('DualScrollSync', () => {
 
 	it('should render children when items prop is not provided', () => {
 		const { getByTestId, getByText } = render(
-			<DualScrollSync id="test">
+			<DualScrollSyncBase id="test">
 				<h1 data-testid="child-heading">Child Heading</h1>
-			</DualScrollSync>
+			</DualScrollSyncBase>
 		);
 
 		expect(getByTestId('test')).toBeInTheDocument();

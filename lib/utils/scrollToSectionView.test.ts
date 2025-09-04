@@ -41,12 +41,12 @@ describe('scrollToSectionView', () => {
 
 	it("should' not scroll if container is null", () => {
 		scrollToSectionView(null, target);
-		expect(container.scrollTo).not.toHaveBeenCalled();
+		expect(container.scrollTo).toHaveBeenCalledTimes(0);
 	});
 
 	it("should' not scroll if target is null", () => {
 		scrollToSectionView(container, null);
-		expect(container.scrollTo).not.toHaveBeenCalled();
+		expect(container.scrollTo).toHaveBeenCalledTimes(0);
 	});
 
 	it('should calculate scrollTop correctly and call scrollTo', () => {
