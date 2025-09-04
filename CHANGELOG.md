@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1](https://github.com/dorixdev/react-dual-scroll-sync/compare/v2.0.0...v2.0.1) (2025-09-04)
+
+
+### ✅ Tests
+
+* update scrollToSectionView tests for clarity and consistency ([7ee73a2](https://github.com/dorixdev/react-dual-scroll-sync/commit/7ee73a2088dd6cb9441dfefd407449330c3433c1))
+* update useValidateChildren tests to use async/await for clarity and consistency ([7ee73a2](https://github.com/dorixdev/react-dual-scroll-sync/commit/7ee73a2088dd6cb9441dfefd407449330c3433c1))
+
 ## [2.0.0](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.3...v2.0.0) (2025-09-04)
 
 
