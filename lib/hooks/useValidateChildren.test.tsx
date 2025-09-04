@@ -30,9 +30,7 @@ describe('useValidateChildren', () => {
 
 		act(() => renderHook(() => useValidateChildren({ items, children: null })));
 
-		await waitFor(() => {
-			expect(warnSpy).not.toHaveBeenCalled();
-		});
+		expect(warnSpy).not.toHaveBeenCalled();
 	});
 
 	it('should not log warnings when NavItems and ContentSections match', async () => {
@@ -51,9 +49,7 @@ describe('useValidateChildren', () => {
 
 		act(() => renderHook(() => useValidateChildren({ children, items: undefined })));
 
-		await waitFor(() => {
-			expect(warnSpy).not.toHaveBeenCalled();
-		});
+		expect(warnSpy).not.toHaveBeenCalled();
 	});
 
 	it('should log warnings for missing ContentSections', async () => {
@@ -127,8 +123,6 @@ describe('useValidateChildren', () => {
 
 		act(() => renderHook(() => useValidateChildren({ children, items: undefined })));
 
-		await waitFor(() => {
-			expect(warnSpy).not.toHaveBeenCalled();
-		});
+		expect(warnSpy).not.toHaveBeenCalled();
 	});
 });
