@@ -38,6 +38,7 @@ export default defineConfig({
 		setupFiles: ['./lib/setupTests.ts'],
 		include: ['lib/**/*.{test,spec}.{js,ts,jsx,tsx}'],
 		coverage: {
+			all: true,
 			thresholds: { functions: 80, branches: 80, lines: 80, statements: 80 },
 			include: ['lib/**/*.{js,jsx,ts,tsx}'],
 			exclude: [
