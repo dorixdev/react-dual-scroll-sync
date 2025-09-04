@@ -5,6 +5,10 @@ import { afterEach, vi } from 'vitest';
 
 import * as hooks from '@/hooks';
 
+beforeEach(() => {
+	expect.hasAssertions();
+});
+
 afterEach(() => {
 	cleanup();
 });

@@ -31,7 +31,7 @@ describe('useValidateChildren', () => {
 		act(() => renderHook(() => useValidateChildren({ items, children: null })));
 
 		await waitFor(() => {
-			expect(warnSpy).toHaveBeenCalledTimes(0);
+			expect(warnSpy).not.toHaveBeenCalled();
 		});
 	});
 
@@ -52,7 +52,7 @@ describe('useValidateChildren', () => {
 		act(() => renderHook(() => useValidateChildren({ children, items: undefined })));
 
 		await waitFor(() => {
-			expect(warnSpy).toHaveBeenCalledTimes(0);
+			expect(warnSpy).not.toHaveBeenCalled();
 		});
 	});
 
@@ -128,7 +128,7 @@ describe('useValidateChildren', () => {
 		act(() => renderHook(() => useValidateChildren({ children, items: undefined })));
 
 		await waitFor(() => {
-			expect(warnSpy).toHaveBeenCalledTimes(0);
+			expect(warnSpy).not.toHaveBeenCalled();
 		});
 	});
 });
