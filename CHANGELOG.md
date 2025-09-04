@@ -1,5 +1,29 @@
 # Changelog
 
+## [2.0.0](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.3...v2.0.0) (2025-09-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **DualScrollSync:** DualScrollSync now supports a declarative compound-components API in addition to the existing `items` prop pattern.
+
+### ✨ Features
+
+* **DualScrollSync:** add DualScrollSyncContent component ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+* **DualScrollSync:** add DualScrollSyncContentSection component ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+* **DualScrollSync:** add DualScrollSyncLabel component ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+* **DualScrollSync:** add DualScrollSyncNav component ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+* **DualScrollSync:** add DualScrollSyncNavItem component ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+* **DualScrollSync:** adopt compound-components API alongside items prop ([#15](https://github.com/dorixdev/react-dual-scroll-sync/issues/15)) ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+* **hooks:** add useDualScrollSyncContext for accessing scroll synchronization context ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+* **hooks:** implement useValidateChildren to validate Nav and Content sections ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+* **types:** introduce types for content, navigation, and labels ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+
+
+### ⚡ Performance Improvements
+
+* **DualScrollSync:** refactor component structure and improve test coverage ([a1c7a1f](https://github.com/dorixdev/react-dual-scroll-sync/commit/a1c7a1ff88dd17ac257a92886a08ece58aa2a750))
+
 ## [1.2.3](https://github.com/dorixdev/react-dual-scroll-sync/compare/v1.2.2...v1.2.3) (2025-08-27)
 
 ### ⚡ Performance Improvements
