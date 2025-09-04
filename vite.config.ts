@@ -53,7 +53,7 @@ export default defineConfig({
 				'**/lib/**/*.types.{js,ts,jsx,tsx}'
 			],
 			provider: 'v8',
-			reporter: ['html', 'clover', 'json', 'text', 'text-summary']
+			reporter: ['html', 'text', 'text-summary', 'lcov']
 		}
 	},
 	resolve: {
