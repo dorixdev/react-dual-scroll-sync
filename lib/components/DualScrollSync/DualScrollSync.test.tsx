@@ -1,109 +1,52 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it, Mock, vi } from 'vitest';
+import { render } from '@testing-library/react';
 
-import { type UseScrollSyncObserverReturn } from '../../hooks';
 import { DualScrollSync } from './DualScrollSync';
 
-const scrollSyncInitialState: UseScrollSyncObserverReturn = {
-	activeKey: 's1',
-	contentRef: { current: null },
-	sectionRefs: { current: {} },
-	onMenuItemSelect: vi.fn(),
-	navItemRefs: { current: {} },
-	navRef: { current: null }
-};
+describe('DualScrollSync', () => {
+	it('should render children correctly', () => {
+		const { getByTestId } = render(
+			<DualScrollSync>
+				<div>Test Content</div>
+			</DualScrollSync>
+		);
 
-const mockUseScrollSyncObserver: Mock<() => UseScrollSyncObserverReturn> = vi.fn(
-	() => scrollSyncInitialState
-);
-
-vi.mock('../../hooks/useDualScrollSyncObserver', () => ({
-	useScrollSyncObserver: () => mockUseScrollSyncObserver()
-}));
-
-describe('DualScrollSync (with mocked hook)', () => {
-	const items = [
-		{ sectionKey: 's1', label: 'Section 1', children: <div>Content 1</div> },
-		{ sectionKey: 's2', label: 'Section 2', children: <div>Content 2</div> },
-		{ sectionKey: 's3', label: 'Section 3', children: <div>Content 3</div> },
-		{ sectionKey: 's4', label: 'Section 4', children: <div>Content 4</div> },
-		{ sectionKey: 's5', label: 'Section 5', children: <div>Content 5</div> },
-		{ sectionKey: 's6', label: 'Section 6', children: <div>Content 6</div> }
-	];
-
-	beforeEach(() => {
-		mockUseScrollSyncObserver.mockReturnValue(scrollSyncInitialState);
+		expect(getByTestId('dual-scroll-sync')).toBeInTheDocument();
 	});
 
-	it('finds navItem and section by id and checks text', () => {
-		render(<DualScrollSync items={items} />);
+	it('should render with provided id', () => {
+		const { getByTestId } = render(
+			<DualScrollSync id="custom-id">
+				<div>Test Content</div>
+			</DualScrollSync>
+		);
 
-		const navItem = document.getElementById('dual-scroll-sync-nav-item-s2');
-
-		expect(navItem).toBeInTheDocument();
-		expect(navItem).toHaveTextContent('Section 2');
-
-		const section = document.getElementById('dual-scroll-sync-content-section-s2');
-
-		expect(section).toBeInTheDocument();
-		expect(section).toHaveTextContent('Section 2');
-		expect(section).toHaveTextContent('Content 2');
+		expect(getByTestId('custom-id')).toBeInTheDocument();
 	});
 
-	it('highlights the active option', () => {
-		mockUseScrollSyncObserver.mockReturnValue({
-			...scrollSyncInitialState,
-			activeKey: 's2'
-		});
+	it('should render with provided items', () => {
+		const items = [
+			{ label: 'Item 1', sectionKey: 's1' },
+			{ label: 'Item 2', sectionKey: 's2' }
+		];
 
-		render(<DualScrollSync items={items} />);
+		const { getByTestId } = render(<DualScrollSync items={items} id="test" />);
 
-		const section = screen.getByRole('button', { name: 'Section 2' });
-
-		expect(section.className).toContain('scrollSyncNavItemActive');
+		expect(getByTestId('test-nav-id')).toBeInTheDocument();
+		expect(getByTestId('test-nav-id-item-s1')).toBeInTheDocument();
+		expect(getByTestId('test-nav-id-item-s2')).toBeInTheDocument();
+		expect(getByTestId('test-content-id')).toBeInTheDocument();
+		expect(getByTestId('test-content-id-section-s1')).toBeInTheDocument();
+		expect(getByTestId('test-content-id-section-s2')).toBeInTheDocument();
 	});
 
-	it('calls handleMenuClick when an option is clicked', () => {
-		const handleMenuClickMock = vi.fn();
+	it('should render children when items prop is not provided', () => {
+		const { getByTestId, getByText } = render(
+			<DualScrollSync id="test">
+				<h1 data-testid="child-heading">Child Heading</h1>
+			</DualScrollSync>
+		);
 
-		mockUseScrollSyncObserver.mockReturnValue({
-			...scrollSyncInitialState,
-			activeKey: 's2',
-			onMenuItemSelect: handleMenuClickMock
-		});
-
-		render(<DualScrollSync items={items} />);
-
-		const section2Btn = screen.getByRole('button', { name: 'Section 2' });
-
-		fireEvent.click(section2Btn);
-
-		expect(handleMenuClickMock).toHaveBeenCalledWith('s2');
-	});
-
-	it('calls onSectionChange when an option is clicked', () => {
-		const onSectionChangeMock = vi.fn();
-
-		render(<DualScrollSync items={items} onItemClick={onSectionChangeMock} />);
-		const section2Btn = screen.getByRole('button', { name: 'Section 2' });
-		fireEvent.click(section2Btn);
-
-		expect(onSectionChangeMock).toHaveBeenCalledWith('s2');
-	});
-
-	it('renders with default class names when no custom class names are provided', () => {
-		render(<DualScrollSync items={items} id="test" />);
-
-		const menu = document.getElementById('test');
-		const menuNav = document.getElementById('test-nav');
-		const menuContent = document.getElementById('test-content');
-		const contentSection = document.getElementById('test-content-section-s1');
-		const navItem = document.getElementById('test-nav-item-s1');
-
-		expect(menu).toBeInTheDocument();
-		expect(menuNav).toBeInTheDocument();
-		expect(menuContent).toBeInTheDocument();
-		expect(contentSection).toBeInTheDocument();
-		expect(navItem).toBeInTheDocument();
+		expect(getByTestId('test')).toBeInTheDocument();
+		expect(getByText('Child Heading')).toBeInTheDocument();
 	});
 });

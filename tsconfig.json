@@ -27,10 +27,18 @@
 		"erasableSyntaxOnly": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true,
+		"verbatimModuleSyntax": true,
 
 		/* Storybook */
 		"esModuleInterop": true,
-		"allowJs": true
+		"allowJs": true,
+
+		/* Module Resolution */
+		"baseUrl": ".",
+		"paths": {
+			"@": ["./lib"],
+			"@/*": ["./lib/*"]
+		}
 	},
 	"include": ["lib"]
 }

@@ -1,0 +1,13 @@
+@use '@/scss/tokens.scss' as *;
+
+.scrollSyncContentSectionLabel {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+
+	padding: var(--dual-scroll-sync-space-s, #{$space-s}) 0;
+
+	font-weight: bold;
+}

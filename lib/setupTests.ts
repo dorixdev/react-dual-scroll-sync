@@ -3,6 +3,8 @@ import '@testing-library/jest-dom';
 import { cleanup } from '@testing-library/react';
 import { afterEach, vi } from 'vitest';
 
+import * as hooks from '@/hooks';
+
 afterEach(() => {
 	cleanup();
 });
@@ -47,3 +49,19 @@ export class IntersectionObserverMock implements IntersectionObserver {
 }
 
 vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
+
+export const mockOnItemClick = vi.fn();
+export const mockOnMenuItemSelect = vi.fn();
+
+vi.spyOn(hooks, 'useDualScrollSyncContext').mockReturnValue({
+	contentId: 'test-content-id',
+	navId: 'test-nav-id',
+	baseId: 'test',
+	activeKey: 'test-section',
+	contentRef: { current: null },
+	navItemRefs: { current: {} },
+	navRef: { current: null },
+	sectionRefs: { current: {} },
+	onMenuItemSelect: mockOnMenuItemSelect,
+	onItemClick: mockOnItemClick
+});

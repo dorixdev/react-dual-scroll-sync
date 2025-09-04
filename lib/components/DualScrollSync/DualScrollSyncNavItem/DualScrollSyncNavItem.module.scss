@@ -1,0 +1,71 @@
+@use '@/scss/tokens.scss' as *;
+
+.scrollSyncNavItem {
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+	height: calc(100% / var(--menu-nav-visible-count));
+	min-height: 60px;
+	padding: var(--dual-scroll-sync-space-m, #{$space-m}) var(--dual-scroll-sync-space-s, #{$space-s});
+	border: none;
+	border-bottom: 1px solid var(--dual-scroll-sync-border-color, #{$border-color});
+
+	text-align: left;
+
+	background-color: var(
+		--dual-scroll-sync-inactive-background-color,
+		#{$inactive-background-color}
+	);
+
+	transition: var(--dual-scroll-sync-transition, #{$transition});
+
+	&:first-child {
+		border-top-left-radius: var(--dual-scroll-sync-border-radius, #{$border-radius});
+	}
+
+	&:last-child {
+		border-bottom: none;
+		border-bottom-left-radius: var(--dual-scroll-sync-border-radius, #{$border-radius});
+	}
+}
+
+.scrollSyncNavItemLabel {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+
+	margin: auto 0;
+	padding: 0 var(--dual-scroll-sync-space-m, #{$space-m});
+
+	font-size: smaller;
+}
+
+.scrollSyncNavItemActive {
+	position: relative;
+	background-color: var(
+		--dual-scroll-sync-highlight-background-color,
+		#{$highlight-background-color}
+	);
+
+	span {
+		font-weight: bold;
+		color: var(--dual-scroll-sync-highlight-foreground-color, #{$highlight-foreground-color});
+
+		&::before {
+			content: '';
+
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			height: 100%;
+			border-left: 4px solid
+				var(--dual-scroll-sync-highlight-foreground-color, #{$highlight-foreground-color});
+		}
+	}
+}

@@ -1,0 +1,16 @@
+@use '@/scss/tokens.scss' as *;
+
+.scrollSyncContent {
+	overflow-x: hidden;
+	overflow-y: auto;
+	flex: 1;
+	gap: var(--dual-scroll-sync-space-m, #{$space-m});
+
+	height: 100%;
+	padding: var(--dual-scroll-sync-space-s, #{$space-s});
+
+	background-color: var(
+		--dual-scroll-sync-highlight-background-color,
+		#{$highlight-background-color}
+	);
+}

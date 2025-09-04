@@ -1,6 +1,7 @@
 /// <reference types="vitest/config" />
 
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
@@ -38,9 +39,33 @@ export default defineConfig({
 		include: ['lib/**/*.{test,spec}.{js,ts,jsx,tsx}'],
 		coverage: {
 			thresholds: { functions: 80, branches: 80, lines: 80, statements: 80 },
-			all: true,
+			include: ['lib/**/*.{js,jsx,ts,tsx}'],
+			exclude: [
+				'**/stories/**',
+				'**/storybook-static/**',
+				'**/dist/**',
+				'**/node_modules/**',
+				'**/*.d.ts',
+				'**/*.config.*',
+				'**/vite.config.*',
+				'**/.storybook/**',
+				'**/lib/**/index.{js,ts,jsx,tsx}',
+				'**/lib/**/*.types.{js,ts,jsx,tsx}'
+			],
 			provider: 'v8',
 			reporter: ['html', 'clover', 'json', 'text', 'text-summary']
+		}
+	},
+	resolve: {
+		alias: {
+			'@': fileURLToPath(new URL('./lib', import.meta.url))
+		}
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				loadPaths: [fileURLToPath(new URL('./lib', import.meta.url))]
+			}
 		}
 	}
 });

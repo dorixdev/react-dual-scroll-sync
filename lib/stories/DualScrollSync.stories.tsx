@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
 
-import { DualScrollSync } from '../DualScrollSync';
+import { DualScrollSync } from '@/components/DualScrollSync';
+
 import { MockContentSection } from './mocks';
 import { FILTER_GROUPS } from './mocks/MockFilterGroups';
 
@@ -66,6 +67,71 @@ export const Default: Story = {
 	)
 };
 
+export const DeclarativeExample: Story = {
+	name: 'Declarative Usage',
+	args: {
+		id: 'declarative-dual-scroll-sync',
+		maxVisibleItems: 6
+	},
+	decorators: [
+		(Story) => (
+			<section
+				style={{ height: '50dvh', maxWidth: '360px', maxHeight: '480px', minHeight: '320px' }}
+			>
+				<Story />
+			</section>
+		)
+	],
+	render: (args) => (
+		<DualScrollSync {...args}>
+			<DualScrollSync.Nav>
+				<DualScrollSync.NavItem sectionKey="s1">Label 1</DualScrollSync.NavItem>
+				<DualScrollSync.NavItem sectionKey="s2">Label 2</DualScrollSync.NavItem>
+				<DualScrollSync.NavItem sectionKey="s3">Label 3</DualScrollSync.NavItem>
+				<DualScrollSync.NavItem sectionKey="s4">Label 4</DualScrollSync.NavItem>
+				<DualScrollSync.NavItem sectionKey="s5">Label 5</DualScrollSync.NavItem>
+				<DualScrollSync.NavItem sectionKey="s6">Label 6</DualScrollSync.NavItem>
+				<DualScrollSync.NavItem sectionKey="s7">Label 7</DualScrollSync.NavItem>
+				<DualScrollSync.NavItem sectionKey="s8">Label 8</DualScrollSync.NavItem>
+			</DualScrollSync.Nav>
+			<DualScrollSync.Content>
+				<DualScrollSync.ContentSection sectionKey="s1">
+					<DualScrollSync.Label>Label 1</DualScrollSync.Label>
+					<MockContentSection />
+				</DualScrollSync.ContentSection>
+				<DualScrollSync.ContentSection sectionKey="s2">
+					<DualScrollSync.Label>Label 2</DualScrollSync.Label>
+					<MockContentSection />
+				</DualScrollSync.ContentSection>
+				<DualScrollSync.ContentSection sectionKey="s3">
+					<DualScrollSync.Label>Label 3</DualScrollSync.Label>
+					<MockContentSection />
+				</DualScrollSync.ContentSection>
+				<DualScrollSync.ContentSection sectionKey="s4">
+					<DualScrollSync.Label>Label 4</DualScrollSync.Label>
+					<MockContentSection />
+				</DualScrollSync.ContentSection>
+				<DualScrollSync.ContentSection sectionKey="s5">
+					<DualScrollSync.Label>Label 5</DualScrollSync.Label>
+					<MockContentSection />
+				</DualScrollSync.ContentSection>
+				<DualScrollSync.ContentSection sectionKey="s6">
+					<DualScrollSync.Label>Label 6</DualScrollSync.Label>
+					<MockContentSection />
+				</DualScrollSync.ContentSection>
+				<DualScrollSync.ContentSection sectionKey="s7">
+					<DualScrollSync.Label>Label 7</DualScrollSync.Label>
+					<MockContentSection />
+				</DualScrollSync.ContentSection>
+				<DualScrollSync.ContentSection sectionKey="s8">
+					<DualScrollSync.Label>Label 8</DualScrollSync.Label>
+					<MockContentSection />
+				</DualScrollSync.ContentSection>
+			</DualScrollSync.Content>
+		</DualScrollSync>
+	)
+};
+
 export const FewSectionsExample: Story = {
 	args: {
 		items: [
@@ -85,7 +151,7 @@ export const FewSectionsExample: Story = {
 	],
 	render: ({ items, ...args }) => (
 		<DualScrollSync
-			items={items.map((item) => ({
+			items={items?.map((item) => ({
 				...item,
 				children: <MockContentSection minHeight="480px" />
 			}))}
@@ -175,55 +241,60 @@ export const FiltersRealCaseExample: Story = {
 		],
 		maxVisibleItems: 8
 	},
-	render: ({ items, ...args }) => (
-		<div
-			className="border rounded d-flex flex-column"
-			style={{
-				backgroundColor: '#ccc',
-				height: '90dvh',
-				maxWidth: '360px',
-				maxHeight: '720px',
-				minHeight: '420px'
-			}}
-		>
-			<style>
-				{`
+	decorators: [
+		(Story) => (
+			<div
+				className="border rounded d-flex flex-column"
+				style={{
+					backgroundColor: '#ccc',
+					height: '90dvh',
+					maxWidth: '360px',
+					maxHeight: '720px',
+					minHeight: '420px'
+				}}
+			>
+				<style>
+					{`
 					:root {
 						--dual-scroll-sync-border-color: var(--bs-border-color);
 						--dual-scroll-sync-highlight-foreground-color: var(--bs-primary);
 						--dual-scroll-sync-max-width-nav: 100px;
 					}
 				`}
-			</style>
-			<div style={{ filter: 'blur(4px)', height: '100%' }}>
-				<div className="p-3">
-					<h3 className="pt-2">Filters</h3>
-					<hr className="my-0" />
-					<p>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, maiores sit nam tenetur
-						harum deleniti...
-					</p>
+				</style>
+				<div style={{ filter: 'blur(4px)', height: '100%' }}>
+					<div className="p-3">
+						<h3 className="pt-2">Filters</h3>
+						<hr className="my-0" />
+						<p>
+							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, maiores sit nam
+							tenetur harum deleniti...
+						</p>
+					</div>
 				</div>
+				<section
+					className="d-flex flex-column gap-3 p-3 bg-white rounded"
+					style={{ minHeight: '240px', maxHeight: '900px', height: 'fit-content' }}
+				>
+					<header className="d-flex justify-content-end align-items-center">
+						<i className="bi bi-x-lg" style={{ cursor: 'pointer' }} />
+					</header>
+					<Story />
+					<div className="d-flex w-100 gap-2">
+						<button className="btn btn-outline-danger w-100">Clear filters</button>
+						<button className="btn btn-primary w-100">Apply filters</button>
+					</div>
+				</section>
 			</div>
-			<section
-				className="d-flex flex-column gap-3 p-3 bg-white rounded"
-				style={{ height: 'fit-content', minHeight: '240px', maxHeight: '720px' }}
-			>
-				<header className="d-flex justify-content-end align-items-center">
-					<i className="bi bi-x-lg" style={{ cursor: 'pointer' }} />
-				</header>
-				<DualScrollSync
-					items={items.map((item, idx) => ({
-						...item,
-						children: FILTER_GROUPS[idx] || <MockContentSection minHeight="240px" />
-					}))}
-					{...args}
-				/>
-				<div className="d-flex w-100 gap-2">
-					<button className="btn btn-outline-danger w-100">Clear filters</button>
-					<button className="btn btn-primary w-100">Apply filters</button>
-				</div>
-			</section>
-		</div>
+		)
+	],
+	render: ({ items, ...args }) => (
+		<DualScrollSync
+			items={items?.map((item, idx) => ({
+				...item,
+				children: FILTER_GROUPS[idx] || <MockContentSection minHeight="240px" />
+			}))}
+			{...args}
+		/>
 	)
 };

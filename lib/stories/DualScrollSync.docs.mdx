@@ -2,6 +2,7 @@ import * as DualScrollSyncStories from './DualScrollSync.stories.tsx';
 
 import {
 	ArgTypes,
+	Canvas,
 	Controls,
 	Meta,
 	Primary,
@@ -24,6 +25,7 @@ import {
 - Synchronizes the active state between navigation menu and visible content.
 - Enables smooth scrolling between sections.
 - Highlights the active menu item for better user orientation.
+- **Data driven** and **declarative** usage options.
 
 ## 📦 Import
 
@@ -67,5 +69,32 @@ You can customize the styles by overriding the CSS variables defined in the pack
 - Designed for responsive mobile-first layouts but adaptable to any size.
 - Works best when content items are tall enough to require scrolling, ensuring the menu remains useful.
 
-<Primary />
-<Controls />
+## 🧱 Patterns
+
+The following examples demonstrate both data-driven and declarative approaches to using the DualScrollSync component effectively.
+
+### Data-Driven
+
+To create a data-driven DualScrollSync, define your sections in an array and map over them to generate the navigation items and content sections.
+
+Use cases:
+
+- Dynamic content generation
+- Integration with CMS or APIs
+
+<Canvas of={DualScrollSyncStories.Default}>
+	<Story />
+</Canvas>
+
+### Declarative
+
+Define your sections directly in the JSX structure for a more straightforward approach. Ensure each section has a unique `sectionKey` and corresponding `NavItem` for synchronization.
+
+Use cases:
+
+- Static content
+- More control over structure
+
+<Canvas of={DualScrollSyncStories.DeclarativeExample}>
+	<Story />
+</Canvas>

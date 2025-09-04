@@ -1,10 +1,16 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { DualScrollSync } from '../components/DualScrollSync';
-import { IntersectionObserverMock } from '../setupTests';
+import { IntersectionObserverMock } from '@/setupTests';
 
-export function mockRect(el: Element, rect: Partial<DOMRect>) {
+async function importDualScrollSyncModule() {
+	vi.resetModules();
+	vi.doUnmock('./useDualScrollSyncContext');
+	const { DualScrollSync } = await import('@/components/DualScrollSync');
+	return { DualScrollSync };
+}
+
+function mockRect(el: Element, rect: Partial<DOMRect>) {
 	const base: DOMRect = {
 		x: 0,
 		y: 0,
@@ -36,7 +42,9 @@ const options = [
 	}
 ];
 
-describe('implementation of useScrollSyncObserver', () => {
+describe('implementation of useScrollSyncObserver', async () => {
+	const { DualScrollSync } = await importDualScrollSyncModule();
+
 	beforeEach(() => {
 		vi.useFakeTimers();
 		IntersectionObserverMock.instances = [];
@@ -174,5 +182,72 @@ describe('implementation of useScrollSyncObserver', () => {
 
 		expect(btnTwo.className).toContain('scrollSyncNavItemActive');
 		expect(btnOne.className).not.toContain('scrollSyncNavItemActive');
+	});
+
+	it('cleans up timeout on click on nav item', () => {
+		const clearTimeout = vi.spyOn(global, 'clearTimeout');
+
+		render(<DualScrollSync id="dual-scroll-sync" items={options} />);
+
+		const btnOne = screen.getByTestId('dual-scroll-sync-nav-item-s1');
+		const btnTwo = screen.getByTestId('dual-scroll-sync-nav-item-s2');
+
+		act(() => fireEvent.click(btnTwo));
+		expect(clearTimeout).toHaveBeenCalledTimes(0);
+
+		act(() => fireEvent.click(btnOne));
+		expect(clearTimeout).toHaveBeenCalledTimes(1);
+	});
+
+	it('cleans up timeout on unmount', () => {
+		const clearTimeout = vi.spyOn(global, 'clearTimeout');
+
+		const { unmount } = render(<DualScrollSync id="dual-scroll-sync" items={options} />);
+
+		const btnTwo = screen.getByTestId('dual-scroll-sync-nav-item-s2');
+
+		act(() => fireEvent.click(btnTwo));
+		expect(clearTimeout).toHaveBeenCalledTimes(0);
+
+		act(() => unmount());
+		expect(clearTimeout).toHaveBeenCalledTimes(1);
+	});
+
+	it('ignores IntersectionObserver while isScrollingByClick is true', () => {
+		render(<DualScrollSync id="dual-scroll-sync" items={options} />);
+
+		const content = screen.getByTestId('dual-scroll-sync-content');
+		const sectionOne = screen.getByTestId('dual-scroll-sync-content-section-s1');
+		const sectionTwo = screen.getByTestId('dual-scroll-sync-content-section-s2');
+
+		const btnOne = screen.getByTestId('dual-scroll-sync-nav-item-s1');
+		const btnTwo = screen.getByTestId('dual-scroll-sync-nav-item-s2');
+
+		mockRect(content, { top: 100, height: 200 });
+		mockRect(sectionOne, { top: 120, height: 300 });
+		mockRect(sectionTwo, { top: 260, height: 300 });
+
+		const observer = IntersectionObserverMock.instances[0];
+
+		act(() => fireEvent.click(btnTwo));
+		act(() => vi.advanceTimersByTime(500));
+
+		act(() => {
+			observer.trigger([
+				{
+					isIntersecting: true,
+					target: sectionOne,
+					boundingClientRect: { top: 120 } as DOMRectReadOnly
+				},
+				{
+					isIntersecting: true,
+					target: sectionTwo,
+					boundingClientRect: { top: 260 } as DOMRectReadOnly
+				}
+			]);
+		});
+
+		expect(btnOne.className).not.toContain('scrollSyncNavItemActive');
+		expect(btnTwo.className).toContain('scrollSyncNavItemActive');
 	});
 });
