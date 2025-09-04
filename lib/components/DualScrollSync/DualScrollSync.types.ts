@@ -1,11 +1,10 @@
-import { type CSSProperties, type PropsWithChildren } from 'react';
+import { type CSSProperties, type FC, type PropsWithChildren } from 'react';
 
-import type { DualScrollSync } from './DualScrollSync';
-import type { DualScrollSyncContent } from './DualScrollSyncContent';
-import type { DualScrollSyncContentSection } from './DualScrollSyncContentSection';
-import type { DualScrollSyncLabel } from './DualScrollSyncLabel';
-import type { DualScrollSyncNav } from './DualScrollSyncNav';
-import type { DualScrollSyncNavItem } from './DualScrollSyncNavItem';
+import type { DualScrollSyncContentProps } from './DualScrollSyncContent';
+import type { DualScrollSyncContentSectionProps } from './DualScrollSyncContentSection';
+import type { DualScrollSyncLabelProps } from './DualScrollSyncLabel';
+import type { DualScrollSyncNavProps } from './DualScrollSyncNav';
+import type { DualScrollSyncNavItemProps } from './DualScrollSyncNavItem';
 
 export type DualScrollSyncStyleProps = {
 	className?: string;
@@ -44,10 +43,10 @@ export type DualScrollSyncProps = PropsWithChildren<{
 	onItemClick?: (activeKey: string) => void;
 }>;
 
-export type DualScrollSyncType = typeof DualScrollSync & {
-	Nav: typeof DualScrollSyncNav;
-	NavItem: typeof DualScrollSyncNavItem;
-	Content: typeof DualScrollSyncContent;
-	ContentSection: typeof DualScrollSyncContentSection;
-	Label: typeof DualScrollSyncLabel;
+export type DualScrollSyncType = FC<DualScrollSyncProps> & {
+	Nav: FC<DualScrollSyncNavProps>;
+	NavItem: FC<DualScrollSyncNavItemProps>;
+	Content: FC<DualScrollSyncContentProps>;
+	ContentSection: FC<DualScrollSyncContentSectionProps>;
+	Label: FC<DualScrollSyncLabelProps>;
 };
