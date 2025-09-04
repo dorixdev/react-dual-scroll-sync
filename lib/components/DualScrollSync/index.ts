@@ -1,4 +1,4 @@
-import { DualScrollSync as CompoundDualScrollSync } from './DualScrollSync';
+import { DualScrollSync as DualScrollSyncBase } from './DualScrollSync';
 import type { DualScrollSyncType } from './DualScrollSync.types';
 import { DualScrollSyncContent } from './DualScrollSyncContent';
 import { DualScrollSyncContentSection } from './DualScrollSyncContentSection/DualScrollSyncContentSection';
@@ -12,7 +12,7 @@ export type * from './DualScrollSyncContentSection';
 export type * from './DualScrollSyncNav';
 export type * from './DualScrollSyncNavItem';
 
-export const DualScrollSync: DualScrollSyncType = Object.assign(CompoundDualScrollSync, {
+export const DualScrollSync: DualScrollSyncType = Object.assign(DualScrollSyncBase, {
 	Nav: DualScrollSyncNav,
 	NavItem: DualScrollSyncNavItem,
 	Content: DualScrollSyncContent,
