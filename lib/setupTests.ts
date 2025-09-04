@@ -21,7 +21,7 @@ Object.defineProperty(HTMLElement.prototype, 'scrollTo', {
 
 // This mock is necessary because JSDOM does not implement IntersectionObserver
 export class IntersectionObserverMock implements IntersectionObserver {
-	static instances: IntersectionObserverMock[] = [];
+	static readonly instances: IntersectionObserverMock[] = [];
 	callback: IntersectionObserverCallback;
 	elements: Element[] = [];
 	root: Element | Document | null = null;
