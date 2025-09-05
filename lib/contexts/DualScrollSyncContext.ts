@@ -6,6 +6,7 @@ export interface DualScrollSyncContextProps extends UseScrollSyncObserverReturn 
 	baseId: string;
 	navId: string;
 	contentId: string;
+	maxVisibleItems: number;
 	onItemClick?: (activeKey: string) => void;
 }
 

@@ -5,6 +5,8 @@ import { afterEach, vi } from 'vitest';
 
 import * as hooks from '@/hooks';
 
+import type { DualScrollSyncContextProps } from './contexts';
+
 beforeEach(() => {
 	expect.hasAssertions();
 });
@@ -57,7 +59,7 @@ vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
 export const mockOnItemClick = vi.fn();
 export const mockOnMenuItemSelect = vi.fn();
 
-vi.spyOn(hooks, 'useDualScrollSyncContext').mockReturnValue({
+export const mockScrollSyncContextProps: DualScrollSyncContextProps = {
 	contentId: 'test-content-id',
 	navId: 'test-nav-id',
 	baseId: 'test',
@@ -66,6 +68,11 @@ vi.spyOn(hooks, 'useDualScrollSyncContext').mockReturnValue({
 	navItemRefs: { current: {} },
 	navRef: { current: null },
 	sectionRefs: { current: {} },
+	maxVisibleItems: 6,
 	onMenuItemSelect: mockOnMenuItemSelect,
 	onItemClick: mockOnItemClick
-});
+};
+
+export const spyUseDualScrollSyncContext = vi.spyOn(hooks, 'useDualScrollSyncContext');
+
+spyUseDualScrollSyncContext.mockReturnValue(mockScrollSyncContextProps);

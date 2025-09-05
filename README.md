@@ -15,6 +15,7 @@ A lightweight React library to synchronize a vertical navigation menu with scrol
 - [Installation](#-installation)
 - [Styles](#-styles)
 - [Quick Start](#-quick-start)
+- [Usage Patterns](#-usage-patterns)
 - [Props Overview](#-props-overview)
 - [Customization](#-customization)
 - [Docs](#-documentation)
@@ -76,11 +77,11 @@ Define your sections in an array and let the component generate both nav items a
 
 ```tsx
 const items = [
-	{ sectionKey: 'intro', label: 'Introduction', children: <p>...</p> },
-	{ sectionKey: 'details', label: 'Details', children: <p>...</p> }
+	{ sectionKey: 'intro', label: 'Introduction', children: <div>...</div> },
+	{ sectionKey: 'details', label: 'Details', children: <div>...</div> }
 ];
 
-<DualScrollSync items={items} onItemClick={(k) => console.log(k)} />;
+return <DualScrollSync items={items} onItemClick={handleClick} />;
 ```
 
 ### Declarative
@@ -90,24 +91,36 @@ Write the structure directly in JSX using `DualScrollSync.NavItem` and `DualScro
 ✅ Best for static pages where you want **full control**.
 
 ```tsx
-<DualScrollSync>
-	<DualScrollSync.Nav>
-		<DualScrollSync.NavItem sectionKey="a">Section A</DualScrollSync.NavItem>
-		<DualScrollSync.NavItem sectionKey="b">Section B</DualScrollSync.NavItem>
-	</DualScrollSync.Nav>
+return (
+	<DualScrollSync onItemClick={handleClick}>
+		<DualScrollSync.Nav>
+			<DualScrollSync.NavItem sectionKey="intro">Introduction</DualScrollSync.NavItem>
+			<DualScrollSync.NavItem sectionKey="details">Details</DualScrollSync.NavItem>
+		</DualScrollSync.Nav>
 
-	<DualScrollSync.Content>
-		<DualScrollSync.ContentSection sectionKey="a">...</DualScrollSync.ContentSection>
-		<DualScrollSync.ContentSection sectionKey="b">...</DualScrollSync.ContentSection>
-	</DualScrollSync.Content>
-</DualScrollSync>
+		<DualScrollSync.Content>
+			<DualScrollSync.ContentSection sectionKey="intro">
+				<DualScrollSync.Label>Introduction</DualScrollSync.Label>
+				<div>...</div>
+			</DualScrollSync.ContentSection>
+			<DualScrollSync.ContentSection sectionKey="details">
+				<DualScrollSync.Label>Details</DualScrollSync.Label>
+				<div>...</div>
+			</DualScrollSync.ContentSection>
+		</DualScrollSync.Content>
+	</DualScrollSync>
+);
 ```
 
 ## ⚖️ When to use
 
-✅ Long scrollable pages with sticky nav  
-✅ Catalog filters, docs sidebars, multi-section layouts  
-❌ Very short pages (anchors may suffice)
+✅ Long scrollable pages with sticky nav
+
+✅ Catalog filters, docs sidebars, multi-section layouts
+
+❌ Very short content (no scrolling needed)
+
+❌ Complex nested navs (not supported)
 
 ## 📘 Documentation
 

@@ -20,9 +20,10 @@ export const DualScrollSyncBase: FC<DualScrollSyncProps> = ({
 	id,
 	items,
 	onItemClick,
+	maxVisibleItems = 6,
 	style = {}
 }) => {
-	const baseId = id ?? 'dual-scroll-sync';
+	const baseId = id || 'dual-scroll-sync';
 	const navId = `${baseId}-nav`;
 	const contentId = `${baseId}-content`;
 
@@ -39,6 +40,7 @@ export const DualScrollSyncBase: FC<DualScrollSyncProps> = ({
 			sectionRefs,
 			navItemRefs,
 			navRef,
+			maxVisibleItems,
 			onMenuItemSelect,
 			onItemClick
 		}),
@@ -51,6 +53,7 @@ export const DualScrollSyncBase: FC<DualScrollSyncProps> = ({
 			sectionRefs,
 			navItemRefs,
 			navRef,
+			maxVisibleItems,
 			onMenuItemSelect,
 			onItemClick
 		]

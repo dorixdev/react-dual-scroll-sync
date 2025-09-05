@@ -1,6 +1,8 @@
 import { render } from '@testing-library/react';
 import { vi } from 'vitest';
 
+import { mockScrollSyncContextProps, spyUseDualScrollSyncContext } from '@/setupTests';
+
 import { DualScrollSyncNav } from './DualScrollSyncNav';
 
 describe('DualScrollSyncNav', () => {
@@ -19,8 +21,13 @@ describe('DualScrollSyncNav', () => {
 	});
 
 	it('should apply maxVisibleItems correctly', () => {
+		spyUseDualScrollSyncContext.mockReturnValueOnce({
+			...mockScrollSyncContextProps,
+			maxVisibleItems: 3
+		});
+
 		const { getByTestId } = render(
-			<DualScrollSyncNav maxVisibleItems={3}>
+			<DualScrollSyncNav>
 				<div>Item 1</div>
 				<div>Item 2</div>
 				<div>Item 3</div>
@@ -34,7 +41,7 @@ describe('DualScrollSyncNav', () => {
 
 	it('should limit visible items to the number of children if fewer than maxVisibleItems', () => {
 		const { getByTestId } = render(
-			<DualScrollSyncNav maxVisibleItems={5}>
+			<DualScrollSyncNav>
 				<div>Item 1</div>
 				<div>Item 2</div>
 				<div>Item 3</div>
