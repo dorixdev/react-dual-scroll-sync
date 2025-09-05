@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/dorixdev/react-dual-scroll-sync/compare/v2.0.1...v2.0.2) (2025-09-05)
+
+
+### 🐛 Bug Fixes
+
+* refactor child validation logic in useValidateChildren for improved clarity ([#23](https://github.com/dorixdev/react-dual-scroll-sync/issues/23)) ([913a78b](https://github.com/dorixdev/react-dual-scroll-sync/commit/913a78be4c10670b09a3d9fbd38d2d691d74b625))
+
 ## [2.0.1](https://github.com/dorixdev/react-dual-scroll-sync/compare/v2.0.0...v2.0.1) (2025-09-04)
 
 
