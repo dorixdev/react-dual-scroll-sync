@@ -81,9 +81,7 @@ const items = [
 	{ sectionKey: 'details', label: 'Details', children: <div>...</div> }
 ];
 
-return (
-	<DualScrollSync items={items} onItemClick={handleClick} />;
-);
+return <DualScrollSync items={items} onItemClick={handleClick} />;
 ```
 
 ### Declarative
