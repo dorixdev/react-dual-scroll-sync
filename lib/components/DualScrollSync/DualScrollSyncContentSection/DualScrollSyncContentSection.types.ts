@@ -1,4 +1,7 @@
-import type { DualScrollSyncItem, DualScrollSyncStyleProps } from '../DualScrollSync.types';
+import type { PropsWithChildren } from 'react';
 
-export type DualScrollSyncContentSectionProps = Omit<DualScrollSyncItem, 'label'> &
-	DualScrollSyncStyleProps;
+import type { DualScrollSyncOptions, DualScrollSyncStyleProps } from '../DualScrollSync.types';
+
+export type DualScrollSyncContentSectionProps = PropsWithChildren<
+	DualScrollSyncStyleProps & Pick<DualScrollSyncOptions, 'sectionKey'>
+>;

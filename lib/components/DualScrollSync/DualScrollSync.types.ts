@@ -18,30 +18,32 @@ export type DualScrollSyncOptions = {
 
 export type DualScrollSyncItem = PropsWithChildren<DualScrollSyncOptions>;
 
-export type DualScrollSyncProps = PropsWithChildren<DualScrollSyncStyleProps> & {
-	/**
-	 * Unique identifier for the DualScrollSync component. (Optional)
-	 * @default 'dual-scroll-sync'
-	 */
-	id?: string;
-	/**
-	 * Array of `DualScrollSyncItem` objects.
-	 * If provided, the component will auto-generate the navigation menu and content sections and ignore any children passed directly to it. (Optional)
-	 * @default []
-	 */
-	items?: DualScrollSyncItem[];
-	/**
-	 * Maximum visible items in the navigation menu. If the number of items exceeds this value, scrolling is activated. (Optional)
-	 * @default 6
-	 */
-	maxVisibleItems?: number;
-	/**
-	 * Callback function triggered when active section changes.
-	 * @param activeKey - The key of the active section.
-	 * @default () => {}
-	 */
-	onItemClick?: (activeKey: string) => void;
-};
+export type DualScrollSyncProps = PropsWithChildren<
+	DualScrollSyncStyleProps & {
+		/**
+		 * Unique identifier for the DualScrollSync component. (Optional)
+		 * @default 'dual-scroll-sync'
+		 */
+		id?: string;
+		/**
+		 * Array of `DualScrollSyncItem` objects.
+		 * If provided, the component will auto-generate the navigation menu and content sections and ignore any children passed directly to it. (Optional)
+		 * @default []
+		 */
+		items?: DualScrollSyncItem[];
+		/**
+		 * Maximum visible items in the navigation menu. If the number of items exceeds this value, scrolling is activated. (Optional)
+		 * @default 6
+		 */
+		maxVisibleItems?: number;
+		/**
+		 * Callback function triggered when active section changes.
+		 * @param activeKey - The key of the active section.
+		 * @default () => {}
+		 */
+		onItemClick?: (activeKey: string) => void;
+	}
+>;
 
 export type DualScrollSyncType = FC<DualScrollSyncProps> & {
 	Nav: FC<DualScrollSyncNavProps>;
