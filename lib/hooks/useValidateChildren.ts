@@ -24,43 +24,36 @@ export const useValidateChildren = ({ items, children }: UseValidateChildrenProp
 		const navKeys = new Set<string>();
 		const contentKeys = new Set<string>();
 
-		const isNav = (child: ReactNode) => isValidElement(child) && child.type === DualScrollSyncNav;
+		const collectNavKeys = (node: ReactNode) => {
+			if (isValidElement<DualScrollSyncNavItemProps>(node) && node.props.sectionKey) {
+				navKeys.add(node.props.sectionKey);
+			}
+		};
 
-		const isContent = (child: ReactNode) =>
-			isValidElement(child) && child.type === DualScrollSyncContent;
+		const collectContentKeys = (node: ReactNode) => {
+			if (isValidElement<DualScrollSyncContentSectionProps>(node) && node.props.sectionKey) {
+				contentKeys.add(node.props.sectionKey);
+			}
+		};
 
 		const visit = (node: ReactNode) => {
 			Children.forEach(node, (child) => {
 				if (!isValidElement(child)) return;
 
-				if (child.type === Fragment) {
-					visit((child.props as PropsWithChildren).children);
-					return;
-				}
-
-				if (isNav(child)) {
-					Children.forEach((child.props as PropsWithChildren).children, (navItem) => {
-						if (isValidElement<DualScrollSyncNavItemProps>(navItem) && navItem.props.sectionKey) {
-							navKeys.add(navItem.props.sectionKey);
+				switch (child.type) {
+					case Fragment:
+						visit((child.props as PropsWithChildren).children);
+						break;
+					case DualScrollSyncNav:
+						Children.forEach((child.props as PropsWithChildren).children, collectNavKeys);
+						break;
+					case DualScrollSyncContent:
+						Children.forEach((child.props as PropsWithChildren).children, collectContentKeys);
+						break;
+					default:
+						if ((child.props as PropsWithChildren)?.children) {
+							visit((child.props as PropsWithChildren).children);
 						}
-					});
-					return;
-				}
-
-				if (isContent(child)) {
-					Children.forEach((child.props as PropsWithChildren).children, (section) => {
-						if (
-							isValidElement<DualScrollSyncContentSectionProps>(section) &&
-							section.props.sectionKey
-						) {
-							contentKeys.add(section.props.sectionKey);
-						}
-					});
-					return;
-				}
-
-				if ((child.props as PropsWithChildren)?.children) {
-					visit((child.props as PropsWithChildren).children);
 				}
 			});
 		};
