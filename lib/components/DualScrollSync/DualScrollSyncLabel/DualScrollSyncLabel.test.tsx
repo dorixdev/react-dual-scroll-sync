@@ -47,6 +47,7 @@ describe('DualScrollSyncLabel', () => {
 
 		const label = getByText('Styled Child');
 
+		expect(label).toBeInTheDocument();
 		expect(label).not.toHaveClass('custom-class');
 		expect(label).not.toHaveStyle('border-width: 1px');
 	});
