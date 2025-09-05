@@ -7,10 +7,10 @@ import styles from './DualScrollSyncNavItem.module.scss';
 import type { DualScrollSyncNavItemProps } from './DualScrollSyncNavItem.types';
 
 export const DualScrollSyncNavItem: FC<DualScrollSyncNavItemProps> = ({
-	sectionKey,
 	children,
 	className,
-	style
+	sectionKey,
+	style = {}
 }) => {
 	const { navId, onMenuItemSelect, onItemClick, activeKey, navItemRefs } =
 		useDualScrollSyncContext();

@@ -16,10 +16,10 @@ export const DualScrollSyncContent: FC<DualScrollSyncContentProps> = ({
 	return (
 		<section
 			className={clsx(styles.scrollSyncContent, className)}
-			style={style}
 			data-testid={contentId}
 			id={contentId}
 			ref={contentRef}
+			style={style}
 		>
 			{children}
 		</section>

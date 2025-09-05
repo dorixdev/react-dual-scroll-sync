@@ -54,4 +54,21 @@ describe('DualScrollSyncNavItem', () => {
 		expect(navItem).toBeInTheDocument();
 		expect(getByText('Custom Child')).toBeInTheDocument();
 	});
+
+	it('should apply custom className and style', () => {
+		const { getByTestId } = render(
+			<DualScrollSyncNavItem
+				sectionKey="custom"
+				className="custom-class"
+				style={{ borderWidth: '1px' }}
+			>
+				<div>Styled Content</div>
+			</DualScrollSyncNavItem>
+		);
+
+		const navItem = getByTestId('test-nav-id-item-custom');
+
+		expect(navItem).toHaveClass('custom-class');
+		expect(navItem).toHaveStyle('border-width: 1px');
+	});
 });

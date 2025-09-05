@@ -20,4 +20,21 @@ describe('DualScrollSyncContentSection', () => {
 		expect(contentSection).toBeInTheDocument();
 		expect(getByText('Test Content')).toBeInTheDocument();
 	});
+
+	it('should apply custom className and style', () => {
+		const { getByTestId } = render(
+			<DualScrollSyncContentSection
+				sectionKey="styled-section"
+				className="custom-class"
+				style={{ borderWidth: '1px' }}
+			>
+				<div>Styled Content</div>
+			</DualScrollSyncContentSection>
+		);
+
+		const contentSection = getByTestId('test-content-id-section-styled-section');
+
+		expect(contentSection).toHaveClass('custom-class');
+		expect(contentSection).toHaveStyle({ borderWidth: '1px' });
+	});
 });
