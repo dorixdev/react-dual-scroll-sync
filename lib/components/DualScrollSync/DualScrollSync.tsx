@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import type { FC } from 'react';
 import { useMemo } from 'react';
 
@@ -15,9 +16,11 @@ import { DualScrollSyncNavItem } from './DualScrollSyncNavItem';
 
 export const DualScrollSyncBase: FC<DualScrollSyncProps> = ({
 	children,
+	className,
 	id,
 	items,
-	onItemClick
+	onItemClick,
+	style = {}
 }) => {
 	const baseId = id ?? 'dual-scroll-sync';
 	const navId = `${baseId}-nav`;
@@ -57,7 +60,12 @@ export const DualScrollSyncBase: FC<DualScrollSyncProps> = ({
 
 	return (
 		<DualScrollSyncContext.Provider value={value}>
-			<section id={baseId} data-testid={baseId} className={styles.scrollSync}>
+			<section
+				className={clsx(styles.scrollSync, className)}
+				data-testid={baseId}
+				id={baseId}
+				style={style}
+			>
 				{items ? (
 					<>
 						<DualScrollSyncNav>

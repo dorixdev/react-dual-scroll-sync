@@ -49,4 +49,17 @@ describe('DualScrollSync', () => {
 		expect(getByTestId('test')).toBeInTheDocument();
 		expect(getByText('Child Heading')).toBeInTheDocument();
 	});
+
+	it('should apply custom className and style', () => {
+		const { getByTestId } = render(
+			<DualScrollSyncBase id="test" className="custom-class" style={{ borderWidth: '1px' }}>
+				Styled Nav
+			</DualScrollSyncBase>
+		);
+
+		const label = getByTestId('test');
+
+		expect(label).toHaveClass('custom-class');
+		expect(label).toHaveStyle('border-width: 1px');
+	});
 });
