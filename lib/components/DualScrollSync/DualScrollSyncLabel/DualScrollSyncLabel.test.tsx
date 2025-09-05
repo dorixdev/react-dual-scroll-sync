@@ -24,4 +24,30 @@ describe('DualScrollSyncLabel', () => {
 		expect(getByText('Bold Label')).toBeInTheDocument();
 		expect(getByText('Bold Label').tagName).toBe('STRONG');
 	});
+
+	it('should apply custom className and style', () => {
+		const { getByText } = render(
+			<DualScrollSyncLabel className="custom-class" style={{ borderWidth: '1px' }}>
+				Styled Label
+			</DualScrollSyncLabel>
+		);
+
+		const label = getByText('Styled Label');
+
+		expect(label).toHaveClass('custom-class');
+		expect(label).toHaveStyle('border-width: 1px');
+	});
+
+	it('should not apply custom className or style if children is not a string', () => {
+		const { getByText } = render(
+			<DualScrollSyncLabel className="custom-class" style={{ borderWidth: '1px' }}>
+				<span>Styled Child</span>
+			</DualScrollSyncLabel>
+		);
+
+		const label = getByText('Styled Child');
+
+		expect(label).not.toHaveClass('custom-class');
+		expect(label).not.toHaveStyle('border-width: 1px');
+	});
 });
