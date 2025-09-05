@@ -15,7 +15,9 @@ const mockValue = {
 	navItemRefs: { current: {} },
 	navRef: { current: null },
 	sectionRefs: { current: {} },
-	onMenuItemSelect: vi.fn()
+	onMenuItemSelect: vi.fn(),
+	onItemClick: vi.fn(),
+	maxVisibleItems: 6
 };
 
 const Wrapper: FC<PropsWithChildren> = ({ children }) => {
