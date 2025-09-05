@@ -44,4 +44,17 @@ describe('DualScrollSyncNav', () => {
 		const navElement = getByTestId('test-nav-id');
 		expect(navElement).toHaveStyle({ '--menu-nav-visible-count': '3' });
 	});
+
+	it('should apply custom className and style', () => {
+		const { getByTestId } = render(
+			<DualScrollSyncNav className="custom-class" style={{ borderWidth: '1px' }}>
+				<div>Styled Content</div>
+			</DualScrollSyncNav>
+		);
+
+		const nav = getByTestId('test-nav-id');
+
+		expect(nav).toHaveClass('custom-class');
+		expect(nav).toHaveStyle('border-width: 1px');
+	});
 });

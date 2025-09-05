@@ -10,8 +10,8 @@ import type { DualScrollSyncNavProps } from './DualScrollSyncNav.types';
 export const DualScrollSyncNav: FC<DualScrollSyncNavProps> = ({
 	children,
 	className,
-	style = {},
-	maxVisibleItems = 6
+	maxVisibleItems = 6,
+	style = {}
 }) => {
 	const { navId, navRef } = useDualScrollSyncContext();
 	const navItemCount = Children.count(children);
