@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/dorixdev/react-dual-scroll-sync/compare/v2.0.2...v2.1.0) (2025-09-05)
+
+
+### ✨ Features
+
+* add support for custom className and style props ([#25](https://github.com/dorixdev/react-dual-scroll-sync/issues/25)) ([202d2b6](https://github.com/dorixdev/react-dual-scroll-sync/commit/202d2b626476b50fb1cd22bbabeea618d48dae4d))
+
 ## [2.0.2](https://github.com/dorixdev/react-dual-scroll-sync/compare/v2.0.1...v2.0.2) (2025-09-05)
 
 
