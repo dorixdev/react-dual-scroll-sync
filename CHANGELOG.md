@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.1.1](https://github.com/dorixdev/react-dual-scroll-sync/compare/v2.1.0...v2.1.1) (2025-09-05)
+
+
+### 🐛 Bug Fixes
+
+* **context:** add maxVisibleItems to DualScrollSyncContextProps interface ([4c13328](https://github.com/dorixdev/react-dual-scroll-sync/commit/4c133289d9998124cce6ac40349587f43b18ea2d))
+* **DualScrollSync:** add maxVisibleItems support with docs and tests ([#27](https://github.com/dorixdev/react-dual-scroll-sync/issues/27)) ([4c13328](https://github.com/dorixdev/react-dual-scroll-sync/commit/4c133289d9998124cce6ac40349587f43b18ea2d))
+* **DualScrollSync:** ensure maxVisibleItems is correctly passed from context ([4c13328](https://github.com/dorixdev/react-dual-scroll-sync/commit/4c133289d9998124cce6ac40349587f43b18ea2d))
+
+
+### 📝 Documentation
+
+* **README:** update usage patterns and examples for DualScrollSync component ([4c13328](https://github.com/dorixdev/react-dual-scroll-sync/commit/4c133289d9998124cce6ac40349587f43b18ea2d))
+
+
+### ✅ Tests
+
+* **DualScrollSyncNav:** update tests to use context mock for maxVisibleItems ([4c13328](https://github.com/dorixdev/react-dual-scroll-sync/commit/4c133289d9998124cce6ac40349587f43b18ea2d))
+
 ## [2.1.0](https://github.com/dorixdev/react-dual-scroll-sync/compare/v2.0.2...v2.1.0) (2025-09-05)
 
 
