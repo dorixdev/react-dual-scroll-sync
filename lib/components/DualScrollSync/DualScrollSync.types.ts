@@ -18,7 +18,7 @@ export type DualScrollSyncOptions = {
 
 export type DualScrollSyncItem = PropsWithChildren<DualScrollSyncOptions>;
 
-export type DualScrollSyncProps = PropsWithChildren<{
+export type DualScrollSyncProps = PropsWithChildren<DualScrollSyncStyleProps> & {
 	/**
 	 * Unique identifier for the DualScrollSync component. (Optional)
 	 * @default 'dual-scroll-sync'
@@ -41,7 +41,7 @@ export type DualScrollSyncProps = PropsWithChildren<{
 	 * @default () => {}
 	 */
 	onItemClick?: (activeKey: string) => void;
-}>;
+};
 
 export type DualScrollSyncType = FC<DualScrollSyncProps> & {
 	Nav: FC<DualScrollSyncNavProps>;

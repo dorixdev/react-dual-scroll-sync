@@ -1,3 +1,5 @@
 import type { PropsWithChildren } from 'react';
 
-export type DualScrollSyncLabelProps = PropsWithChildren;
+import type { DualScrollSyncStyleProps } from '../DualScrollSync.types';
+
+export type DualScrollSyncLabelProps = PropsWithChildren<DualScrollSyncStyleProps>;
